@@ -48,7 +48,7 @@ body.no-scroll {
   margin-inline: auto;
 }
 
-
+/* 반투명 고정 헤더 */
 header {
   width: 100%;
   position: fixed;
@@ -59,16 +59,18 @@ header {
   transition: .3s;
   z-index: 10;
   background-color: rgba(29, 28, 28, 0.5);
-    color: var(--b-color);
+  color: var(--b-color);
+  font-size: 1.5rem;
 }
 
 /* header on일 때 전체 배경색 및 반투명도 설정 */
 header.on {
- background-color: rgba(29, 28, 28, 0.5);
+  background-color: rgba(29, 28, 28, 0.5);
   height: 45%;
   backdrop-filter: blur(25px);
 }
 
+/* 반투명 고정 헤더 */
 header .inner {
   height: 80px;
   display: flex;
@@ -83,6 +85,7 @@ header.on nav {
 /* gnb */
 header nav ul.gnb {
   display: flex;
+  align-items: center;
 }
 
 header nav ul.gnb>li {
@@ -93,6 +96,7 @@ header nav ul.gnb>li>a {
   display: flex;
   min-width: 120px;
   height: 2.667rem;
+  font-size: 1.5rem;
   justify-content: center;
   align-items: center;
   color: var(--w-color);

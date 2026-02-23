@@ -43,8 +43,8 @@ figure.vid video {
   left: 5%;
   bottom: 15%;
   margin: 0;
-  padding: 0 0 120px 60px;
-  width: min(1000px, 100%);
+  padding: 0 0 120px 0;
+  width: min(1400px, 100%);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -54,13 +54,13 @@ figure.vid video {
 
 
 .main_visual .txt_area .tit h2{
-  font-size: 48px;
+  font-size: 3.5rem;
   font-weight: 600;
 }
 
 
 .main_visual .txt_area .txt p{
-  font-size: 18px;
+  font-size: 2.25rem;
   font-weight: 400;
   opacity: .9;
 }
@@ -78,10 +78,10 @@ figure.vid video {
   align-items: center;
   justify-content: center;
   padding: 10px 22px;
-  border-radius: 999px;
+  border-radius: var(--round);
   background: linear-gradient(135deg, #F6339A 0%, #FB64B6 100%);
   color: var(--w-color);
-  font-size: .85rem;
+  font-size: 1.5rem;
   font-weight: 600;
 }
 
@@ -147,7 +147,7 @@ figure.vid video {
 }
 
 /* 큰 제목 */
-.benefit .contents .txt {
+.benefit .contents .tit {
   margin: 0;
   font-size: 48px;
   font-weight: 600;
@@ -155,9 +155,9 @@ figure.vid video {
 }
 
 /* 작은 제목 */
-.benefit .contents .tit {
+.benefit .contents .txt {
   margin: 0;
-  font-size: 18px;
+  font-size: 24px;
   line-height: 1.12;
   font-weight: 400;
   letter-spacing: -0.8px;
@@ -189,8 +189,8 @@ figure.vid video {
 
 /* 아이콘 */
 .benefit .benefit_icon {
-  width: 56px;
-  height: 56px;
+  width: 60px;
+  height: 60px;
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -199,7 +199,7 @@ figure.vid video {
 }
 
 .benefit .benefit_icon i {
-  font-size: 24px;
+  font-size: 1.5rem;
   color: var(--w-color);
 }
 
@@ -253,7 +253,7 @@ figure.vid video {
   border-radius: var(--round);
   background: linear-gradient(135deg, #F6339A 0%, #FB64B6 100%);
   color: var(--w-color);
-  font-size: 13px;
+  font-size: 1.5rem;
   font-weight: 700;
 }
 
@@ -676,7 +676,7 @@ figure.vid video {
 
 .e_caption {
   display: inline-block;
-  font-size: 12px;
+  font-size: 20px;
   font-weight: 800;
   letter-spacing: 1.2px;
   margin-bottom: 8px;
@@ -685,8 +685,8 @@ figure.vid video {
 
 .event_title {
   margin: 0;
-  font-size: 34px;
-  font-weight: 800;
+  font-size: 50px;
+  font-weight: 700;
   letter-spacing: -0.5px;
   color: var(--b-color);
 }
@@ -700,12 +700,12 @@ figure.vid video {
 }
 
 .tab {
-  height: 32px;
-  padding: 0 14px;
+  height: 48px;
+  padding: 0 20px;
   border-radius: var(--round);
   border: 1px solid var(--main-gray);
   background: var(--main-gray);
-  font-size: 12px;
+  font-size: 24px;
   font-weight: 700;
   cursor: pointer;
   color: var(--w-color);
@@ -727,7 +727,7 @@ figure.vid video {
   flex: 0 0 45%; 
   border-radius: var(--round);
   overflow: hidden;
-  height: 380px;}
+  height: 600px;}
 
 .event_banner img{
   width: 100%;
@@ -740,19 +740,20 @@ figure.vid video {
 .event_side{
   flex: 1;
   min-width: 0;
-  padding-top: 6px;
+  padding: 240px 0;
 }
 
 .event_side_title{
-  margin: 0 0 6px;
-  font-size: 18px;
+  margin: 0 0 8px;
+  font-size: 28px;
   font-weight: 700;
   color: var(--b-color);
 }
 
 .event_side_desc{
-  margin: 0 0 18px;
+  margin: 0 0 24px;
   color: var(--b-color);
+  font-size: 20px;
 }
 
 /* items */
@@ -772,8 +773,8 @@ figure.vid video {
 }
 
 .e_thumb{
-  width: 64px;
-  height: 64px;
+  width: 108px;
+  height: 108px;
   overflow: hidden;
   flex: 0 0 auto;
 }
@@ -791,8 +792,8 @@ figure.vid video {
 
 .e_name{
   margin: 0 0 6px;
-  font-size: 13px;
-  font-weight: 900;
+  font-size: 22px;
+  font-weight: 700;
   color: var(--b-color);
 }
 
@@ -803,19 +804,19 @@ figure.vid video {
 }
 
 .e_sale{
-  font-size: 12px;
-  font-weight: 900;
+  font-size: 18px;
+  font-weight: 700;
   color: var(--main-red);
 }
 
 .e_now{
-  font-size: 13px;
-  font-weight: 900;
+  font-size: 18px;
+  font-weight: 700;
   color: var(--b-color);
 }
 
 .e_was{
-  font-size: 12px;
+  font-size: 18px;
   color: rgba(0,0,0,.45);
   text-decoration: line-through;
 }
