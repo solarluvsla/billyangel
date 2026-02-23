@@ -1,0 +1,375 @@
+@charset "utf-8";
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+
+:root {
+  --main-color: #e84393;
+  --main-hotpink: #e84393;
+  --main-pink: #fd79a8;
+  --main-red: #d63031;
+  --main-rpink: #ff7675;
+  --main-orange-d: #e17055;
+  --main-orange-l: #fab1a0;
+  --main-yellow-d: #fdcb6e;
+  --main-yellow-l: #fff2e1;
+  --main-violet: #6c5ce7;
+  --main-violet-l: #a29bfe;
+  --main-blue: #0984e3;
+  --main-blue-l: #74b9ff;
+  --main-aqua-d: #00cec9;
+  --main-aqua-l: #81ecec;
+  --main-gray: #717171;
+  --b-color: #222;
+  --w-color: #fff;
+  --round: 24px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: var(--main-orange-l);
+  color: var(--w-color);
+}
+
+body {
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue",
+    "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.inner {
+  width: 95%;
+  max-width: 1600px;
+  color: var(--w-color);
+  margin-inline: auto;
+}
+
+
+header {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  transition: .3s;
+  z-index: 10;
+}
+
+/* header on일 때 전체 배경색 및 반투명도 설정 */
+header.on {
+  background-color: rgba(255, 245, 214, 0.5);
+  height: 45%;
+  backdrop-filter: blur(25px);
+}
+
+header .inner {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+header.on nav {
+  display: none;
+}
+/* gnb */
+header nav ul.gnb {
+  display: flex;
+}
+
+header nav ul.gnb>li {
+  position: relative;
+}
+/* gnb 목록 */
+header nav ul.gnb>li>a {
+  display: flex;
+  min-width: 120px;
+  height: 2.667rem;
+  justify-content: center;
+  align-items: center;
+  color: var(--w-color);
+}
+
+header nav ul.gnb>li>ul.sub {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 178px;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  background: rgba(0, 0, 0, .75);
+  border-radius: 12px;
+  padding: 12px;
+  z-index: 20;
+}
+
+header nav ul.gnb>li:first-child>ul.sub {
+  left: 0;
+  transform: none;
+}
+
+header nav ul.gnb>li>ul.sub li a {
+  display: flex;
+  padding: 18px;
+  transition: .2s;
+  color: #fff;
+}
+
+header nav ul.gnb>li:hover>ul.sub {
+  display: flex;
+}
+
+header nav ul.gnb>li>ul.sub li:hover a {
+  color: #fff;
+
+}
+
+/* 아이콘 */
+header .right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+a.af {
+  font-size: 14px;
+  display: flex;
+  height: 40px;
+  padding: 0 15px;
+  border-radius: 40px;
+  align-items: center;
+  color: #fff;
+  gap: 5px;
+}
+
+a.af::after {
+  content: "→";
+  transform: rotate(-45deg);
+}
+
+header .right a {
+  transition: .5s;
+}
+
+/* ham menu */
+header .right ul {
+  width: 40px;
+  height: 40px;
+  padding: 11px 0;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+/* ham menu 막대*/
+header .right ul li {
+  width: 23px;
+  height: 2px;
+  background: var(--w-color);
+  transition: transform .6s;
+}
+
+/* header: on */
+/* on 상태 : ham menu 막대 */
+header.on .right ul li:nth-child(1) {
+  position: absolute;
+  left: 22%;
+  top: 50%;
+  margin-top: -1px;
+  background: var(--w-color);
+  transform: rotate(45deg);
+}
+
+header.on .right ul li:nth-child(2) {
+  display: none;
+}
+
+header.on .right ul li:nth-child(3) {
+  position: absolute;
+  right: 22%;
+  top: 50%;
+  margin-top: -1px;
+  background: var(--w-color);
+  transform: rotate(-45deg);
+}
+
+header.on .ham_menu {
+  display: flex;
+  flex: 1;
+}
+
+header .ham_menu {
+  display: none;
+  width: 100%;
+}
+
+/* 전체메뉴 박스 */
+header .container {
+  max-width: 1600px;
+  /* 가로 최대 넓이 */
+  margin: 0 auto;
+  width: 80%;
+}
+
+/* on 상태 : 큰tit */
+header .container h2 {
+  font-size: 40px;
+  color: var(--w-color);
+  font-weight: 600;
+  margin-bottom: 1em;
+}
+
+/* on 상태 : sub */
+header .container .all_con {
+  width: 100%;
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  color: var(--w-color);
+}
+
+/* on 상태 : list */
+header .container .all_con ul.list {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+header .container .all_con ul.list>li {
+  width: auto;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  min-width: 180px;
+}
+
+/* on 상태 : 중간tit */
+header .container .all_con ul.list>li button {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  color: var(--w-color);
+  text-align: left;
+  display: flex;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* on 상태 : sub list */
+header .container .all_con ul.list>li ul {
+  margin-top: 2em;
+  line-height: 2.4;
+  font-size: 18px;
+}
+
+
+
+/* footer */
+.footer {
+  position: relative;
+  background: #747b82;
+  color: var(--w-color);
+  padding: 50px 0;
+  text-align: center;
+}
+
+.footer .inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 35px;
+}
+
+.footer_logo {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--w-color);
+}
+
+.footer_sns {
+  display: flex;
+  gap: 25px;
+  font-size: 1.2rem;
+}
+
+.footer_sns a {
+  color: var(--w-color);
+  opacity: .8;
+  transition: .3s;
+}
+
+.footer_sns a:hover {
+  opacity: 1;
+}
+
+.footer_list {
+  display: flex;
+  gap: 30px;
+  font-size: .9rem;
+}
+
+.footer_list a {
+  color: var(--w-color);
+  opacity: .9;
+}
+
+.footer_list a:hover {
+  opacity: 1;
+}
+
+.footer_info {
+  font-size: .8rem;
+}
+
+.footer_info p {
+  margin-bottom: 5px;
+}
+
+.f_copy {
+  font-size: .75rem;
+  opacity: .7;
+  margin-top: 20px;
+}
+
+.top_btn {
+  position: absolute;
+  top: 40px;
+  right: 60px;
+}
+
+.top_btn a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: .75rem;
+  color: var(--w-color);
+  opacity: .8;
+}
+
+.top_btn i {
+  border: 1px solid var(--w-color);
+  border-radius: 50%;
+  padding: 10px;
+  margin-bottom: 5px;
+  font-size: .8rem;
+}
+
+.top_btn a:hover {
+  opacity: 1;
+}
