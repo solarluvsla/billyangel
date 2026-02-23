@@ -297,19 +297,19 @@ figure.vid video {
   padding: 80px 0;          
   display: flex;
   align-items: center;
-  justify-content: space-evenly;/* left와 right 간격 */
+  justify-content: flex-start;/* left와 right 간격 */
   gap: 30px;
 }
 
 .sale_left{
-  /* flex: 1; */
+  flex: 1;
   min-width: 0;
   position: relative;
 }
 
 .sale_left .s_caption{
   display: inline-block;
-  font-size: 12px;
+  font-size: 20px;
   font-weight: 800;
   letter-spacing: 1.2px;
   opacity: .9;
@@ -319,7 +319,7 @@ figure.vid video {
 /* 타이틀 */
 .sale_left .tit{
   margin: 0 0 10px;
-  font-size: 48px;
+  font-size: 4rem;
   font-weight: 600;
 
 }
@@ -345,20 +345,22 @@ figure.vid video {
 }
 
 .sale_right{
+  width: 1000px;
+  height: 500px;
   display: flex;
   align-items: center;
   gap: 8px;
   background: var(--w-color);
   border-radius: 18px;
-  padding: 22px;
+  padding: 40px;
   color: var(--b-color);
   box-shadow: 0 18px 40px rgba(0,0,0,.14);
 }
 
 /* 썸네일 */
 .sale_thumb{
-  flex: 0 0 140px;
-  height: 140px;
+  flex: 1;
+  height: 300px;
   border-radius: 12px;
   background: url("../asset/sale/sale_md.png") center/cover no-repeat;
 }
@@ -366,6 +368,7 @@ figure.vid video {
 /* 카드 텍스트 */
 .sale_card{
   flex: 1;
+  margin-left: 30px;
   min-width: 0;
 }
 
@@ -375,14 +378,14 @@ figure.vid video {
 
 .sale_name{
   margin: 0;
-  font-size: 14px;
-  font-weight: 900;
+  font-size: 2rem;
+  font-weight: 700;
   line-height: 1.35;
 }
 
 .sale_copy{
   margin: 0 0 12px;
-  font-size: 12px;
+  font-size: 1.5rem;
   line-height: 1.55;
   color: rgba(0,0,0,.62);
 }
@@ -396,19 +399,19 @@ figure.vid video {
 }
 
 .sale_badge{
-  font-size: 12px;
-  font-weight: 900;
+  font-size: 1.5rem;
+  font-weight: 700;
   color: var(--main-red);
 }
 
 .price_now{
-  font-size: 14px;
-  font-weight: 900;
+  font-size: 1.5rem;
+  font-weight: 700;
   color: var(--b-color);
 }
 
 .price_was{
-  font-size: 12px;
+  font-size: 1.25rem;
   color: var(--main-gray);
   text-decoration: line-through;
 }
@@ -421,8 +424,8 @@ figure.vid video {
   border-radius: var(--round);
   background: linear-gradient(135deg, #F6339A 0%, #FB64B6 100%);
   color: var(--w-color);
-  font-size: .85rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 
@@ -497,7 +500,7 @@ figure.vid video {
 
 .pick_title{
   margin: 0;
-  font-size: 48px;
+  font-size: 4rem;
   font-weight: 600;
   color: #222;
   letter-spacing: -0.4px;
@@ -511,7 +514,7 @@ figure.vid video {
   border-radius: 999px;
   background: linear-gradient(135deg, #F6339A 0%, #FB64B6 100%);
   color: var(--w-color);
-  font-size: .85rem;
+  font-size: 1.5rem;
   font-weight: 600;
 }
 
@@ -685,7 +688,7 @@ figure.vid video {
 
 .event_title {
   margin: 0;
-  font-size: 50px;
+  font-size: 4rem;
   font-weight: 700;
   letter-spacing: -0.5px;
   color: var(--b-color);
