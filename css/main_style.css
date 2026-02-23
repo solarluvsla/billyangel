@@ -54,14 +54,14 @@ figure.vid video {
 
 
 .main_visual .txt_area .tit h2{
-  font-size: 52px;
-  font-weight: 700;
+  font-size: 48px;
+  font-weight: 600;
 }
 
 
 .main_visual .txt_area .txt p{
-  font-size: 20px;
-  font-weight: 300;
+  font-size: 18px;
+  font-weight: 400;
   opacity: .9;
 }
 
@@ -159,7 +159,7 @@ figure.vid video {
   margin: 0;
   font-size: 18px;
   line-height: 1.12;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: -0.8px;
   color: var(--main-gray);
 }
@@ -213,15 +213,17 @@ figure.vid video {
 
 .benefit .txt_bottom h3 {
   margin: 0 0 8px;
-  font-size: 22px;
-  font-weight: 900;
+  font-size: 1.5rem;
+  font-size: 26px;
+  font-weight: 700;
   color: var(--b-color);
 }
 
 .benefit .txt_bottom span {
   display: block;
   margin-bottom: 8px;
-  font-size: 14px;
+  font-size: 18px;
+  font-weight: 500;
   color: var(--main-color);
 }
 
@@ -233,7 +235,7 @@ figure.vid video {
 }
 
 .benefit .txt_bottom em {
-  font-weight: 700;
+  font-weight: 800;
 }
 
 /* 하단 버튼 */
@@ -248,11 +250,11 @@ figure.vid video {
   align-items: center;
   gap: 8px;
   padding: 10px 18px;
-  border-radius: 999px;
+  border-radius: var(--round);
   background: linear-gradient(135deg, #F6339A 0%, #FB64B6 100%);
   color: var(--w-color);
   font-size: 13px;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 /* 반응형 */
@@ -325,7 +327,8 @@ figure.vid video {
 /* 설명 */
 .sale_left .txt{
   margin: 0;
-  font-size: 14px;
+  font-size: 18px;  
+  font-weight: 400;
   opacity: .9;
 }
 
@@ -472,16 +475,14 @@ figure.vid video {
 .pick{
   width: 100%;
   background: var(--w-color);
-  padding: 0;
 }
 
 .pick .pick_inner{
   width: 95%;
   max-width: 1600px;
   margin: 0 auto;
-  padding: 90px 0 80px; /* 여백은 inner에서 */
-  display: grid;
-  grid-template-columns: 240px 1fr;
+  padding: 90px 0 80px;
+  display: flex;
   gap: 40px;
   align-items: start;
 }
@@ -491,28 +492,27 @@ figure.vid video {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  flex:4;
 }
 
 .pick_title{
   margin: 0;
-  font-size: 28px;
-  font-weight: 800;
+  font-size: 48px;
+  font-weight: 600;
   color: #222;
   letter-spacing: -0.4px;
 }
 
 .btn_more{
-  width: fit-content;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  height: 32px;
-  padding: 0 14px;
+  justify-content: center;
+  padding: 10px 22px;
   border-radius: 999px;
-  background: #ff6aa3;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 800;
+  background: linear-gradient(135deg, #F6339A 0%, #FB64B6 100%);
+  color: var(--w-color);
+  font-size: .85rem;
+  font-weight: 600;
 }
 
 /* swiper */
@@ -537,6 +537,7 @@ figure.vid video {
   background: #fff;
   border-radius: 16px;
   padding: 18px 18px 14px;
+
 }
 
 
@@ -655,8 +656,10 @@ figure.vid video {
   }
 }
 /* EVENT */
-.event {
+.event{
+  width: 100%;
   background: var(--main-yellow-l);
+  padding: 0;
 }
 
 .event_inner{  
@@ -665,18 +668,18 @@ figure.vid video {
   margin: 0 auto;
   padding: 90px 0 80px;
 }
+
 .event_head {
   text-align: center;
   margin-bottom: 24px;
 }
 
 .e_caption {
-   display: inline-block;
+  display: inline-block;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 1.2px;
-  opacity: .9;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   color: var(--b-color);
 }
 
@@ -685,21 +688,21 @@ figure.vid video {
   font-size: 34px;
   font-weight: 800;
   letter-spacing: -0.5px;
-  color:var(--b-color);
+  color: var(--b-color);
 }
 
 .event_tabs {
   display: flex;
   justify-content: first baseline;
   gap: 10px;
-  margin-bottom: 28px;
+  margin-bottom: 34px;
   flex-wrap: wrap;
 }
 
 .tab {
-  height: 30px;
+  height: 32px;
   padding: 0 14px;
-  border-radius: 999px;
+  border-radius: var(--round);
   border: 1px solid var(--main-gray);
   background: var(--main-gray);
   font-size: 12px;
@@ -715,127 +718,132 @@ figure.vid video {
 }
 
 .event_layout {
+  display: flex;
   gap: 26px;
-  align-items: start;
+  align-items: flex-start;
 }
 
-.event_banner {
-  border-radius: 18px;
+.event_banner{
+  flex: 0 0 45%; 
+  border-radius: var(--round);
   overflow: hidden;
-  background: var(--w-color);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, .10);
-}
+  height: 380px;}
 
-.event_banner img {
-  width: 650px;
-  height: 450px;
-  display: block;
+.event_banner img{
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  display: block;
 }
 
-.event_side {
-  padding-top: 60%;
+/* right */
+.event_side{
+  flex: 1;
+  min-width: 0;
+  padding-top: 6px;
 }
 
-.event_side_title {
+.event_side_title{
   margin: 0 0 6px;
-  font-size: 16px;
-  font-weight: 900;
-  color: var(--b-color)
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--b-color);
 }
 
-.event_side_desc {
-  margin: 0 0 14px;
-  font-size: 12px;
-  color: rgba(0, 0, 0, .55);
+.event_side_desc{
+  margin: 0 0 18px;
+  color: var(--b-color);
 }
 
-.event_items {
+/* items */
+.event_items{
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-.e_item {
+.e_item{
   display: flex;
-  gap: 12px;
   align-items: center;
-  background: rgba(255, 255, 255, .7);
-  border: 1px solid rgba(0, 0, 0, .06);
-  border-radius: 14px;
-  padding: 10px;
+  gap: 12px;
+  padding: 12px;
+  border-radius: var(--round);
+  background: rgba(255,255,255,.7);
 }
 
-.e_thumb {
+.e_thumb{
   width: 64px;
   height: 64px;
-  border-radius: 12px;
   overflow: hidden;
-  background: #eee;
   flex: 0 0 auto;
 }
 
-.e_thumb img {
+.e_thumb img{
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
-.e_name {
+.e_info{
+  min-width: 0;
+}
+
+.e_name{
   margin: 0 0 6px;
   font-size: 13px;
   font-weight: 900;
-  color: #222;
+  color: var(--b-color);
 }
 
-.e_price {
+.e_price{
   display: flex;
-  align-items: baseline;
   gap: 8px;
+  align-items: baseline;
 }
 
-.e_sale {
+.e_sale{
   font-size: 12px;
   font-weight: 900;
-  color: #d63031;
+  color: var(--main-red);
 }
 
-.e_now {
+.e_now{
   font-size: 13px;
   font-weight: 900;
-  color: #222;
+  color: var(--b-color);
 }
 
-.e_was {
+.e_was{
   font-size: 12px;
-  color: rgba(0, 0, 0, .45);
+  color: rgba(0,0,0,.45);
   text-decoration: line-through;
 }
 
-/* -----------------------
-   Responsive
------------------------ */
-@media (max-width: 1100px) {
-  .pick_inner {
-    grid-template-columns: 1fr;
+/* 반응형 */
+@media (max-width: 1100px){
+  .event_layout{
+    flex-direction: column;
   }
 
-  .pick_grid {
-    grid-template-columns: 1fr;
-  }
-
-  .event_layout {
-    grid-template-columns: 1fr;
+  .event_banner{
+    flex: none;
+    width: 100%;
+    height: 340px; /* 모바일/태블릿에서는 약간 낮춤 */
   }
 }
 
-@media (max-width: 600px) {
-  section {
-    padding: 70px 0;
+@media (max-width: 600px){
+  .event_inner{
+    padding: 70px 0 70px;
   }
 
-  .p_img {
-    height: 220px;
+  .event_title{
+    font-size: 28px;
+  }
+
+  .event_banner{
+    height: 280px;
   }
 }
 
@@ -847,7 +855,7 @@ figure.vid video {
   padding: 90px 0 80px;
   overflow: hidden;
   color: #fff;
-  background: url("../asset/review/review_bg2.jpg") center/cover no-repeat;
+  background: var(--w-color);
   position: relative;
 }
 
@@ -880,31 +888,30 @@ figure.vid video {
 }
 
 .review .more {
-  margin-top: 0;
+ margin: 0;
+  font-size: 48px;
+  font-weight: 600;
+  color: #222;
+  letter-spacing: -0.4px;
 }
 
 .review .more_icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 34px;
-  padding: 0 16px;
+  padding: 10px 22px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(6px);
-  font-size: 12px;
-  font-weight: 800;
-  transition: .25s;
+  background: linear-gradient(135deg, #F6339A 0%, #FB64B6 100%);
+  color: var(--w-color);
+  font-size: .85rem;
+  font-weight: 600;
 }
 
 .review .more_icon:hover {
   background: rgba(255, 255, 255, 0.28);
 }
 
-/* =========================
-   SLIDE LINES
-========================= */
+/* slide */
 .review .slide_wrap {
   width: 100%;
   overflow: hidden;

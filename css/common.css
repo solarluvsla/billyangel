@@ -64,7 +64,7 @@ header {
 
 /* header on일 때 전체 배경색 및 반투명도 설정 */
 header.on {
-  background-color: rgba(255, 245, 214, 0.5);
+ background-color: rgba(29, 28, 28, 0.5);
   height: 45%;
   backdrop-filter: blur(25px);
 }
