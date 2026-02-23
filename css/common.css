@@ -58,6 +58,8 @@ header {
   flex-direction: column;
   transition: .3s;
   z-index: 10;
+  background-color: rgba(29, 28, 28, 0.5);
+    color: var(--b-color);
 }
 
 /* header on일 때 전체 배경색 및 반투명도 설정 */
