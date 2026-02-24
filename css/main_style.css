@@ -174,10 +174,11 @@ figure.vid video {
 
 /* 카드 */
 .benefit .benefit_wrap {
-  width: 380px;
+  width: 450px;
   min-height: 260px;
   padding: 44px 46px;
-  border-radius: 24px;
+  margin-bottom: 30px;
+  border-radius: var(--round);
   background: var(--main-yellow-l);
   box-shadow:
     0 20px 25px -5px rgba(164, 161, 151, .08),
@@ -214,8 +215,7 @@ figure.vid video {
 
 .benefit .txt_bottom h3 {
   margin: 0 0 8px;
-  font-size: 1.5rem;
-  font-size: 26px;
+  font-size: 2rem;
   font-weight: 700;
   color: var(--b-color);
 }
@@ -223,20 +223,20 @@ figure.vid video {
 .benefit .txt_bottom span {
   display: block;
   margin-bottom: 8px;
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 1.5rem;
+  font-weight: 300;
   color: var(--main-color);
 }
 
 .benefit .txt_bottom p {
   margin: 0;
-  font-size: 14px;
+  font-size: 1.25rem;
   line-height: 1.55;
   color: var(--main-gray);
 }
 
 .benefit .txt_bottom em {
-  font-weight: 800;
+  font-weight: 700;
 }
 
 /* 하단 버튼 */
@@ -705,18 +705,18 @@ figure.vid video {
   height: 48px;
   padding: 0 20px;
   border-radius: var(--round);
-  border: 1px solid var(--main-gray);
-  background: var(--main-gray);
+  border: 1px solid var(--main-gray-l);
+  background: var(--main-gray-l);
   font-size: 1.5rem;
-  font-weight: 400;
   cursor: pointer;
-  color: var(--w-color);
+  color: var(--b-color);
 }
 
 .tab.is_active {
   background: var(--b-color);
   border-color: var(--b-color);
   color: var(--w-color);
+  font-weight: 400;
 }
 
 .event_layout {
@@ -747,7 +747,7 @@ figure.vid video {
 
 .event_side_title{
   margin: 0 0 8px;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--b-color);
 }
@@ -797,6 +797,7 @@ figure.vid video {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--b-color);
+  margin-bottom: 15%;
 }
 
 .e_price{
