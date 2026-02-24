@@ -1,75 +1,116 @@
 @charset "utf-8";
 
-figure.vid {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-}
-
-figure.vid video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .main_visual{
   width: 100%;
-  min-height: 100vh; 
+  position: relative;
 }
 
 .main_visual .inner.slide{
-  width: 95%;
-  max-width: 1600px;
-  margin: 0 auto;
-  min-height: 100vh;     /* 슬라이드 높이 확보 */
-  display: flex;
+  width: 100%;
+  max-width: none;          /* ✅ 1800px 제한 제거(여백 원인) */
+  margin: 0;
+  min-height: 100vh;
+  position: relative;       /* pager 기준 */
 }
 
+/* ✅ 슬라이드(배경)는 100% 꽉 */
 .main_visual .swiper{
   width: 100%;
-  flex: 1;
-  position: relative;
+  min-height: 100vh;
   overflow: hidden;
-  border-radius: var(--round);
+  border-radius: 0;         /* ✅ 박스 느낌 제거 */
 }
 
+/* 슬라이드 */
 .main_visual .swiper-slide{
   position: relative;
-  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
-.main_visual .swiper-slide .txt_area{
+/* 배경 영상: 슬라이드 전체를 꽉 채움 */
+.main_visual .swiper-slide .bg_video{
   position: absolute;
-  left: 5%;
-  bottom: 15%;
-  margin: 0;
-  padding: 0 0 120px 0;
-  width: min(1400px, 100%);
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* 오버레이 */
+.main_visual .swiper-slide::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,.55) 0%,
+    rgba(0,0,0,.30) 35%,
+    rgba(0,0,0,.10) 60%,
+    rgba(0,0,0,0) 100%
+  );
+  z-index: 1;
+}
+
+/* ✅ 텍스트/버튼은 inner(1600) 기준으로 정렬 */
+.main_visual .txt_area{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: clamp(80px, 16vh, 190px);
+
+  width: 95%;
+  max-width: 1600px;
+
+  /* ✅ 부모 padding 지양 → 텍스트에만 여백 */
+  padding-left: clamp(18px, 5vw, 72px);
+
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
+
   color: var(--w-color);
   z-index: 2;
 }
 
+.main_visual .txt_area .tag_new{
+  align-self: flex-start;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(0,0,0,.75);
+  font-size: 0.85rem;
+}
 
 .main_visual .txt_area .tit h2{
-  font-size: 3.5rem;
-  font-weight: 600;
+  margin: 0;
+  font-size: clamp(28px, 3.2vw, 56px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.6px;
+  word-break: keep-all;
 }
-
 
 .main_visual .txt_area .txt p{
-  font-size: 2.25rem;
+  margin: 0;
+  font-size: clamp(14px, 1.4vw, 22px);
   font-weight: 300;
-  opacity: .9;
+  line-height: 1.45;
+  opacity: .92;
+  word-break: keep-all;
 }
 
+/* MORE 버튼: 텍스트와 같은 기준 */
 .main_visual .swiper-slide .more{
   position: absolute;
-  left: 5%;
-  bottom: 5%;
-  padding: 0 0 120px 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: clamp(36px, 10vh, 120px);
+
+  width: 95%;
+  max-width: 1600px;
+  padding-left: clamp(18px, 5vw, 72px);
+
   z-index: 2;
 }
 
@@ -77,45 +118,54 @@ figure.vid video {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 22px;
+  padding: 12px 22px;
   border-radius: var(--round);
   background: linear-gradient(135deg, #F6339A 0%, #FB64B6 100%);
   color: var(--w-color);
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
 }
 
-
+/* pager: 가운데 하단 */
 .main_visual .pager{
   position: absolute;
   left: 50%;
-  bottom: 6%;
-  display: flex;
-  gap: 16px;
   transform: translateX(-50%);
+  bottom: clamp(18px, 4vh, 42px);
   z-index: 3;
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  color: var(--w-color);
 }
 
-/* 반응형: 좌측 여백만 줄이기 */
+/* 모바일 최적화 */
 @media (max-width: 768px){
-  .main_visual .swiper-slide .txt_area{
-    padding-left: 24px;
-    padding-bottom: 110px;
-    width: min(520px, 100%);
+  .main_visual .swiper-slide::after{
+    background: linear-gradient(
+      180deg,
+      rgba(0,0,0,.15) 0%,
+      rgba(0,0,0,.35) 55%,
+      rgba(0,0,0,.55) 100%
+    );
   }
+
+  .main_visual .txt_area{
+    bottom: 118px;
+    padding-left: 18px;
+  }
+
   .main_visual .swiper-slide .more{
-    left: 24px;
-    bottom: 52px;
+    bottom: 64px;
+    padding-left: 18px;
   }
-  .main_visual .txt_area .tit h2{
-    font-size: 34px;
-  }
-  .main_visual .txt_area .txt p{
-    font-size: 16px;
+
+  .main_visual .pager{
+    bottom: 20px;
   }
 }
-
-
 .benefit {
   background: var(--w-color);
   padding: 0;
