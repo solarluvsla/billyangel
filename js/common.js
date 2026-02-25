@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!currentEl || !totalEl) return;
       currentEl.textContent = swiper.realIndex + 1;
 
-      // ✅ loop일 때 전체 슬라이드 수 안전하게 계산
+      // loop일 때 전체 슬라이드 수 안전하게 계산
       const total = swiper.slides
         ? swiper.slides.filter(s => !s.classList.contains('swiper-slide-duplicate')).length
         : 3;
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
           updatePager(swiper);
           syncSlideVideos(swiper);
 
-          // ✅ 처음 상태: pause 아이콘만 보이게(원하면 유지)
+          // 처음 상태: pause 아이콘만 보이게(원하면 유지)
           if (btnBox) {
             const pauseIcon = btnBox.querySelector('.fa-pause');
             const playIcon = btnBox.querySelector('.fa-play');
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (heroSwiper.autoplay && heroSwiper.autoplay.running) {
           heroSwiper.autoplay.stop();
 
-          // ✅ 자동재생 멈추면 현재 영상도 멈춤
+          // 자동재생 멈추면 현재 영상도 멈춤
           const activeSlide = heroSwiper.slides[heroSwiper.activeIndex];
           const activeVideo = activeSlide?.querySelector('video.bg_video');
           if (activeVideo) activeVideo.pause();
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
           heroSwiper.autoplay.start();
 
-          // ✅ 자동재생 시작하면 현재 슬라이드 영상 재생
+          // 자동재생 시작하면 현재 슬라이드 영상 재생
           syncSlideVideos(heroSwiper);
 
           if (pauseIcon) pauseIcon.style.display = 'inline-block';
@@ -112,13 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  /* =========================
-   * 2) slide2에 video(hero_bg) 삽입
-   * ========================= */
+  /*  2) slide2에 video(hero_bg) 삽입 */
   const slide2 = document.querySelector('.main_visual .swiper-slide.slide2');
 
   if (slide2) {
-    // 이미 들어가 있으면 중복 삽입 방지
     if (!slide2.querySelector('video.hero_bg')) {
       const video = document.createElement('video');
       video.className = 'hero_bg';
@@ -128,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
       video.playsInline = true;
 
       const source = document.createElement('source');
-      source.src = 'asset/video/slide2.mp4'; // <- 파일 경로 맞게 수정
+      source.src = 'asset/vid.mp4'; // <- 파일 경로 맞게 수정
       source.type = 'video/mp4';
 
       video.appendChild(source);

@@ -73,7 +73,6 @@
   font-weight: 700;
   color: var(--w-color);
   letter-spacing: 1.2px;
-  opacity: .7;
 }
 
 
@@ -83,7 +82,7 @@
   justify-content: center; /* 가로 정렬 */
   width: auto; /* 내용 길이에 맞게 자연스럽게 늘어남 */
   white-space: nowrap; /* 줄바꿈 방지 */
-  padding: 0px 8px;
+  padding: 2px 10px;
   border-radius: 4px;
   font-size: 1.25rem;
   font-weight: 800;
@@ -122,31 +121,6 @@
   z-index: 2;
 }
 
-.main_visual .more_icon{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 26px;
-  border-radius: var(--round);
-  background: rgba(255, 255, 255, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  color: var(--w-color);
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.4px;
-  /* ✅ 입체감(기본) */
-  box-shadow:
-    0 12px 28px rgba(0,0,0,0.25),
-    inset 0 1px 0 rgba(255,255,255,0.35);
-  transition: 0.3s;
-}
-
-.main_visual .more_icon:hover{
-  transform: translateY(-3px);
-  background: linear-gradient(135deg, #F6339A 0%, #FB64B6 100%);
-  border: 1px solid var(--w-color);
-  color: var(--w-color);
-}
 
 /* pager */
 .main_visual .pager{
@@ -356,17 +330,6 @@
   justify-content: center;
 }
 
-.benefit .more_icon {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 18px;
-  border-radius: var(--round);
-  background: linear-gradient(135deg, #F6339A 0%, #FB64B6 100%);
-  color: var(--w-color);
-  font-size: 1.5rem;
-  font-weight: 700;
-}
 
 /* 반응형 */
 @media (max-width: 1100px) {
@@ -527,17 +490,6 @@
   text-decoration: line-through;
 }
 
-.sale_price .more{
-  display: inline-flex;
-  align-items: center;
-  justify-content: first baseline;
-  padding: 10px 22px;
-  border-radius: var(--round);
-  background: linear-gradient(135deg, #F6339A 0%, #FB64B6 100%);
-  color: var(--w-color);
-  font-size: 1.5rem;
-  font-weight: 700;
-}
 
 
 /* 반응형 */
@@ -631,7 +583,7 @@
 
 /* 카드 */
 .p_card{
-  background: #f5f5f5;
+  background: var(--main-gray-l);
   border-radius: var(--round);
   padding: 16px 16px 12px;
   transition: transform 0.35s ease, box-shadow 0.35s ease;
@@ -655,11 +607,12 @@
   align-items: center;
   justify-content: center;
   padding: 2px 10px;
-  font-size: 10px;
-  font-weight: 800;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--w-color);
+  letter-spacing: 1.2px;
   border-radius: 6px;
   background: var(--b-color);
-  color: var(--w-color);
 }
 
 .p_meta .tag_new.best{
@@ -703,23 +656,23 @@
 
 .p_name{
   margin: 0 0 8px;
-  font-size: 13px;
+  font-size: 1.5rem;
   font-weight: 800;
   line-height: 1.35;
-  color: #222;
+  color: var(--b-color);
 }
 
 .p_hash{
   margin: 0 0 10px;
-  font-size: 11px;
+  font-size: 1.5rem;
   line-height: 1.4;
-  color: rgba(0,0,0,.55);
+  color: var(--main-gray-l);
 }
 
 .p_price{
-  font-size: 12px;
-  font-weight: 900;
-  color: #222;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--b-color);
 }
 
 /* 진행바 */

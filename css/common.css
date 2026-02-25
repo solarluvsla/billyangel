@@ -281,13 +281,6 @@ header .container .all_con ul.list>li ul {
   font-size: 18px;
 }
 
-/* =========================
-   PC Mega Panel (Jakomo-like)
-   - big title top, sub under
-   - active = line only (no translucent box)
-   - sub 없는 컬럼도 title line만
-========================= */
-
 @media (min-width:1025px){
 
   /* 기존 작은 드롭다운 끔 */
@@ -421,9 +414,10 @@ header .container .all_con ul.list>li ul {
   justify-content: center;
   padding: 14px 26px;
   border-radius: var(--round);
-  background: rgba(255, 255, 255, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: linear-gradient(135deg, #F6339A 0%, #FB64B6 100%);
+  border: none;
   color: var(--w-color);
+  box-shadow: 0 12px 28px rgba(246,51,154,0.35);
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.4px;
@@ -433,10 +427,9 @@ header .container .all_con ul.list>li ul {
 
 .more_icon:hover{
   transform: translateY(-3px);
-  background: linear-gradient(135deg, #F6339A 0%, #FB64B6 100%);
-  border: 1px solid transparent; /* border none 대신 */
-  color: #fff;
-  box-shadow: 0 20px 50px rgba(246,51,154,0.45);
+  background: var(--b-color);
+  color: var(--w-color);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
 }
 
 
