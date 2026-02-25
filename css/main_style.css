@@ -2,47 +2,45 @@
 
 .main_visual{
   width: 100%;
-  position: relative;
+  min-height: 100vh;/* 브라우저 화면 높이, 최소 높이를 화면 높이만큼 확보 */
+  position: relative;/* absolute(pager) 요소의 기준점 */
 }
 
-.main_visual .inner.slide{
-  width: 100%;
-  max-width: none;          /* ✅ 1800px 제한 제거(여백 원인) */
-  margin: 0;
-  min-height: 100vh;
-  position: relative;       /* pager 기준 */
-}
-
-/* ✅ 슬라이드(배경)는 100% 꽉 */
 .main_visual .swiper{
-  width: 100%;
   min-height: 100vh;
   overflow: hidden;
-  border-radius: 0;         /* ✅ 박스 느낌 제거 */
 }
 
-/* 슬라이드 */
+.main_visual .swiper-wrapper{
+  display: flex;/* 슬라이드 가로 나열 */
+}
+
 .main_visual .swiper-slide{
-  position: relative;
-  min-height: 100vh;
-  overflow: hidden;
-}
-
-/* 배경 영상: 슬라이드 전체를 꽉 채움 */
-.main_visual .swiper-slide .bg_video{
-  position: absolute;
-  inset: 0;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
+  min-height: 100vh;
+  flex-shrink: 0;
+  position: relative;/* absolute(text area/more) 요소의 기준점 */
 }
 
-/* 오버레이 */
+/* 배경 영상 */
+.main_visual .swiper-slide .bg_video{
+  position: absolute;/*swiper-slide를 기준으로 위치를 직접 지정 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;/* 부모 네 면에 딱 붙게 만들기*/
+  object-fit: cover; /* 빈 공간 없이 꽉 채우지만 일부 잘림 */
+  z-index: 0;/* 레이어 순서 가장 아래로 */
+}
+
+/* 오버레이 가독성 확보*/
 .main_visual .swiper-slide::after{
   content: "";
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(
     90deg,
     rgba(0,0,0,.55) 0%,
@@ -53,64 +51,74 @@
   z-index: 1;
 }
 
-/* ✅ 텍스트/버튼은 inner(1600) 기준으로 정렬 */
 .main_visual .txt_area{
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: clamp(80px, 16vh, 190px);
-
+  left: 0;
+  right: 0;
+  margin: 0 auto; /* 반응형 구조 */
   width: 95%;
   max-width: 1600px;
-
-  /* ✅ 부모 padding 지양 → 텍스트에만 여백 */
-  padding-left: clamp(18px, 5vw, 72px);
-
+  bottom: 35vh; /* 위치 조정 */
   display: flex;
   flex-direction: column;
-  gap: 14px;
-
+  gap: 8px;
   color: var(--w-color);
   z-index: 2;
 }
 
-.main_visual .txt_area .tag_new{
-  align-self: flex-start;
-  padding: 6px 12px;
-  border-radius: 8px;
-  background: rgba(0,0,0,.75);
-  font-size: 0.85rem;
-}
-
-.main_visual .txt_area .tit h2{
-  margin: 0;
-  font-size: clamp(28px, 3.2vw, 56px);
+/* ✅ 캡션 */
+.main_visual .m_caption{
+  display: inline-block;/* 줄바꿈 없이 내용만큼만 영역 차지 */
+  font-size: 1.25rem;
   font-weight: 700;
-  line-height: 1.15;
+  color: var(--w-color);
+  letter-spacing: 1.2px;
+  opacity: .7;
+}
+
+
+.main_visual .tag_new{
+  display: inline-flex; /* 내용만큼만 영역 차지 */
+  align-items: center; /* 세로 정렬 */
+  justify-content: center; /* 가로 정렬 */
+  width: auto; /* 내용 길이에 맞게 자연스럽게 늘어남 */
+  white-space: nowrap; /* 줄바꿈 방지 */
+  padding: 0px 8px;
+  border-radius: 4px;
+  font-size: 1.25rem;
+  font-weight: 800;
+  background: var(--b-color);
+  color: var(--w-color);
+  align-self: flex-start;   /* flex column에서 늘어나는 것 방지+왼쪽에서 내용만큼만 표시 */
+}
+
+/* 타이틀 */
+.main_visual .tit h2{
+  font-size: 3.75rem;
+  font-weight: 700; 
   letter-spacing: -0.6px;
-  word-break: keep-all;
+
 }
 
-.main_visual .txt_area .txt p{
-  margin: 0;
-  font-size: clamp(14px, 1.4vw, 22px);
+/* 본문 */
+.main_visual .txt p{
+  max-width: 900px;
+  font-size: 2rem;
   font-weight: 300;
-  line-height: 1.45;
+  letter-spacing: -0.2px;
+  line-height: 1.2;
   opacity: .92;
-  word-break: keep-all;
 }
 
-/* MORE 버튼: 텍스트와 같은 기준 */
+/* MORE 버튼 */
 .main_visual .swiper-slide .more{
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: clamp(36px, 10vh, 120px);
-
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   width: 95%;
   max-width: 1600px;
-  padding-left: clamp(18px, 5vw, 72px);
-
+  bottom: 27vh;
   z-index: 2;
 }
 
@@ -118,27 +126,75 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 22px;
+  padding: 14px 26px;
   border-radius: var(--round);
-  background: linear-gradient(135deg, #F6339A 0%, #FB64B6 100%);
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   color: var(--w-color);
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  /* ✅ 입체감(기본) */
+  box-shadow:
+    0 12px 28px rgba(0,0,0,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.35);
+  transition: 0.3s;
 }
 
-/* pager: 가운데 하단 */
+.main_visual .more_icon:hover{
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #F6339A 0%, #FB64B6 100%);
+  border: 1px solid var(--w-color);
+  color: var(--w-color);
+}
+
+/* pager */
 .main_visual .pager{
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: clamp(18px, 4vh, 42px);
+  bottom: 48px;
   z-index: 3;
-
   display: flex;
   align-items: center;
   gap: 16px;
-
   color: var(--w-color);
+}
+
+.main_visual .btn_box .fa-play{
+  display: none; /* 처음엔 자동재생 중이라 pause만 보이게 */
+} 
+
+/* 반응형 */
+@media (min-width: 1024px){
+  .main_visual .txt p{
+    white-space: nowrap;/* 한줄로 노출 */
+  }
+}
+
+@media (max-width: 768px){
+  .main_visual .swiper-slide::after{
+    background: linear-gradient(
+      180deg,
+      rgba(0,0,0,.15) 0%,
+      rgba(0,0,0,.35) 55%,
+      rgba(0,0,0,.55) 100%
+    );
+  }
+
+  .main_visual .txt_area{
+    bottom: 118px;
+    padding-inline: 18px;
+  }
+
+  .main_visual .more{
+    bottom: 64px;
+    padding-inline: 18px;
+  }
+
+  .main_visual .pager{
+    bottom: 20px;
+  }
 }
 
 /* 모바일 최적화 */
@@ -166,6 +222,9 @@
     bottom: 20px;
   }
 }
+
+
+
 .benefit {
   background: var(--w-color);
   padding: 0;
@@ -194,6 +253,7 @@
   font-weight: 800;
   letter-spacing: 1.2px;
   color: var(--b-color);
+  opacity: .8;
 }
 
 /* 큰 제목 */
