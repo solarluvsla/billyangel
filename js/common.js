@@ -1,5 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
   /* =========================
+   * 1) header
+   * ========================= */
+  const header = document.querySelector('header');
+  const navItems = document.querySelectorAll('header nav .gnb > li');
+  const panelCols = document.querySelectorAll('header .ham_menu .all_con .list > li');
+
+  if (!header || !navItems.length || !panelCols.length) return;
+
+  // ✅ 패널 열기
+  function openMega(idx){
+    header.classList.add('mega_open');
+
+    panelCols.forEach(col => col.classList.remove('is-active'));
+    if (panelCols[idx]) panelCols[idx].classList.add('is-active');
+  }
+
+  // ✅ 패널 닫기
+  function closeMega(){
+    header.classList.remove('mega_open');
+    panelCols.forEach(col => col.classList.remove('is-active'));
+  }
+
+  // nav hover → mega open + 해당 컬럼 활성
+  navItems.forEach((li, idx) => {
+    li.addEventListener('mouseenter', () => openMega(idx));
+    li.addEventListener('focusin', () => openMega(idx)); // 키보드 탭 대응
+  });
+
+  // header에서 마우스가 완전히 벗어나면 닫기
+  header.addEventListener('mouseleave', closeMega);
+
+  // ESC로 닫기
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMega();
+  });
+
+
+  /* =========================
    * 1) 메인 비주얼(hero) Swiper + pager + video sync
    * ========================= */
   const swiperEl = document.querySelector('.main_visual .swiper');
@@ -134,6 +172,30 @@ document.addEventListener('DOMContentLoaded', () => {
       slide2.prepend(video);
     }
   }
+
+   /* =========================
+   * 3) pick_btn like
+   * ========================= */
+
+  const likeButtons = document.querySelectorAll(".btn_like");
+
+  likeButtons.forEach(btn => {
+    btn.addEventListener("click", function(){
+
+      this.classList.toggle("is-active");
+
+      const icon = this.querySelector("i");
+
+      if(this.classList.contains("is-active")){
+        icon.classList.remove("fa-regular");
+        icon.classList.add("fa-solid");
+      } else {
+        icon.classList.remove("fa-solid");
+        icon.classList.add("fa-regular");
+      }
+
+    });
+  });
 
 
   /* =========================

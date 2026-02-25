@@ -283,128 +283,68 @@ header .container .all_con ul.list>li ul {
 
 @media (min-width:1025px){
 
-  /* 기존 작은 드롭다운 끔 */
-  header nav ul.gnb > li > ul.sub{ display:none !important; }
-
   header.mega_open .ham_menu{
     display:block;
     position:absolute;
     left:0;
     top:80px;
     width:100%;
-    background: rgba(18,24,24,.86);
-    backdrop-filter: blur(10px);
-    border-top: 1px solid rgba(255,255,255,.10);
+    background:#fff;
+    border-top:1px solid rgba(0,0,0,.08);
   }
 
   header.mega_open .ham_menu .container{
     width:95%;
     max-width:1600px;
     margin:0 auto;
-    padding:26px 0;
+    padding:40px 0;
   }
 
-  header.mega_open .ham_menu h2{ display:none; }
-
-  /* 5컬럼 */
   header.mega_open .ham_menu .all_con .list{
     display:flex;
-    align-items: stretch;
   }
 
   header.mega_open .ham_menu .all_con .list > li{
     flex:1;
-    min-width:160px;
-    padding:0 22px; /* ✅ 상하 padding 제거(정렬 안정) */
-    border-right:1px solid rgba(255,255,255,.10);
-    position:relative;
-  }
-  header.mega_open .ham_menu .all_con .list > li:last-child{ border-right:0; }
-
-  /* ✅ 투명박스 효과 제거: 배경 없음 */
-  header.mega_open .ham_menu .all_con .list > li.is-active{
-    background: transparent;
+    padding:0 30px;
   }
 
-  /* ✅ 활성 선(큰 메뉴 하단) */
-  header.mega_open .ham_menu .all_con .list > li.is-active > button::after{
-    content:"";
-    position:absolute;
-    left:0;
-    bottom:-12px;
-    width:100%;
-    height:1px;
-    background: rgba(255,255,255,.55);
-  }
-
-  /* 큰 메뉴(컬럼 헤더) */
+  /* ✅ 큰 메뉴 */
   header.mega_open .ham_menu .all_con .list > li > button{
     display:block;
     width:100%;
-    border:0;
-    background:transparent;
     padding:0;
+    margin:0 0 18px;   /* ← 이게 중요 (아래 간격만 줌) */
+    border:0;
+    background:none;
+    font-size:16px;
+    font-weight:800;
     text-align:left;
-    font-size:14px;
-    font-weight:900;
-    color: rgba(255,255,255,.92);
-    height: 42px;           /* ✅ 큰 메뉴 높이 고정 */
-    line-height: 42px;
-    position:relative;      /* ::after 기준 */
-    cursor: default;
+    color:#111;
   }
 
-  /* sub_list: 큰 메뉴 아래로 정렬 */
+  /* ✅ 서브 리스트는 바로 아래 자연스럽게 */
   header.mega_open .ham_menu .sub_list{
-    margin-top: 28px;       /* ✅ 큰 메뉴 아래 간격 */
-    padding: 0;
-    list-style: none;
-    display:block;
+    margin:0;          /* ← 위 여백 제거 */
+    padding:0;
+    list-style:none;
   }
 
   header.mega_open .ham_menu .sub_list li{
-    margin: 0 0 12px;
+    margin-bottom:14px;
   }
 
   header.mega_open .ham_menu .sub_list a{
-    color: rgba(255,255,255,.65);
-    font-size:13px;
+    font-size:14px;
+    color:rgba(0,0,0,.65);
     text-decoration:none;
-  }
-
-  /* ✅ sub 선택 강조: 선만(자코모 느낌) */
-  header.mega_open .ham_menu .sub_list a.is-active{
-    color: rgba(255,255,255,1);
-    text-decoration: underline;
-    text-underline-offset: 6px;
-    text-decoration-thickness: 1px;
   }
 
   header.mega_open .ham_menu .sub_list a:hover{
-    color:#fff;
-    text-decoration: underline;
-    text-underline-offset: 6px;
+    color:#000;
+    text-decoration:underline;
+    text-underline-offset:6px;
   }
-
-  /* ✅ sub 없는 컬럼: quick link */
-  header.mega_open .ham_menu .quick_links{
-    margin-top: 28px;
-  }
-  header.mega_open .ham_menu .quick_links a{
-    color: rgba(255,255,255,.75);
-    font-size:13px;
-    text-decoration:none;
-  }
-  header.mega_open .ham_menu .quick_links a:hover{
-    color:#fff;
-    text-decoration: underline;
-    text-underline-offset: 6px;
-  }
-}
-
-/* mobile: 기존 on 유지 */
-@media (max-width:1024px){
-  header.mega_open .ham_menu{ display:none !important; }
 }
 
 

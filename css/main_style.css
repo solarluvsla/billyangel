@@ -624,13 +624,26 @@
 }
 
 .btn_like{
-  width: 28px;
-  height: 28px;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-  font-size: 16px;
-  color: rgba(0,0,0,.45);
+  width: 36px;
+  height: 36px;/* 정사각형 클릭 영역 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  font-size: 1.5rem;
+  background: transparent; /* 투명, 아이콘만 보이는 구조 */
+  transition: transform .2s ease, color .2s ease;
+}
+
+.btn_like:hover{
+  border: none;
+  background: none;
+  color: var(--main-red);
+  transform: scale(1.15); /* 확대 효과 */
+}
+
+.btn_like.is-active{
+  color: var(--main-red);
 }
 
 .p_img{
