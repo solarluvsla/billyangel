@@ -584,189 +584,187 @@
   }
 }
 
-/* PICK  */
-
+/* PICK */
+/* 배경 담당 */
 .pick{
-  width: 100%;
   background: var(--w-color);
+  padding: 0;
 }
-
+/* 제 콘텐츠 폭, 위아래 여백 담당 */
 .pick .pick_inner{
   width: 95%;
   max-width: 1600px;
   margin: 0 auto;
-  padding: 90px 0 80px;
+  padding: 90px 0 90px;
+  /* pick_head + pick_right를 가로 배치 */
   display: flex;
   gap: 40px;
-  align-items: start;
+  align-items: flex-start;/* 두 영역을 위쪽 기준으로 정렬 */
 }
 
-/* 왼쪽 타이틀 영역 */
+/* 왼쪽 타이틀 */
 .pick_head{
+  width: 400px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  flex:4;
+  gap: 20px;
 }
 
 .pick_title{
-  margin: 0;
-  font-size: 4rem;
-  font-weight: 600;
-  color: var(--b-color);
-  letter-spacing: -0.4px;
+  margin: 0; 
+  font-size: 3.5rem; 
+  font-weight: 600; 
+  color: var(--b-color); 
+  letter-spacing: -0.4px; 
 }
 
-.btn_more{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 22px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #F6339A 0%, #FB64B6 100%);
-  color: var(--w-color);
-  font-size: 1.5rem;
-  font-weight: 700;
+/* 오른쪽 슬라이더 */
+.pick_right{
+  flex: 1;/* 왼쪽 400px 제외한 나머지 공간을 전부 차지 */
+  min-width: 0; /* ✅ swiper 잘림/넘침 방지 */
 }
-
-/* swiper */
 
 .pick_swiper{
   width: 100%;
-  overflow: hidden; 
+  overflow: hidden; /* ✅ 슬라이드 영역만 잘라냄 */
 }
 
-/* 카드 간격 */
-.pick_swiper .swiper-wrapper{
-  align-items: stretch;
-}
-
-.pick_swiper .swiper-slide{
-  height: auto;
-}
-
-
+/* 카드 */
 .p_card{
-  position: relative;
-  background: #fff;
+  background: #f5f5f5;
   border-radius: var(--round);
-  padding: 18px 18px 14px;
+  padding: 16px 16px 12px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* 카드 hover 시 이미지 확대 */
+.p_card:hover .p_img img{
+  transform: scale(1.08);
 }
 
 
 .p_meta{
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
+  justify-content: space-between;/* 양쪽 끝으로 밀어냄 */
+  align-items: center; /* 세로 중앙 정렬 */
+  margin-bottom: 14px; /* 이미지와의 간격 */
 }
 
 .tag_new{
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 24px;
-  padding: 0 8px;
-  font-size: 1.25rem;
+  padding: 2px 10px;
+  font-size: 10px;
   font-weight: 800;
-  border-radius: 4px;
+  border-radius: 6px;
   background: var(--b-color);
   color: var(--w-color);
 }
 
-.btn_like{
-  width: 40px;
-  height: 40px;
-  border: none ;
-  background: var(--w-color);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: linear-gradient(135deg, #F6339A 0%, #FB64B6 100%);
+.p_meta .tag_new.best{
+  background: var(--main-red);
 } 
 
-.btn_like.is-active{
-  color: linear-gradient(135deg, #F6339A 0%, #FB64B6 100%);
-  border-color: rgba(255,106,163,.45);
+.p_meta .tag_new.new{
+  background: var(--b-color);
 }
 
-/* 이미지 영역 */
+.btn_like{
+  width: 28px;
+  height: 28px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  color: rgba(0,0,0,.45);
+}
+
 .p_img{
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--main-gray-l);
-  border-radius: 14px;
+  max-width: 300px;
+  height: 0;
+  padding-top: 133%;
+  position: relative;
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .p_img img{
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-/* 텍스트 */
-.p_body{
-  padding-top: 14px;
-}
+.p_body{ padding-top: 14px; }
 
 .p_name{
   margin: 0 0 8px;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--b-color);
+  font-size: 13px;
+  font-weight: 800;
   line-height: 1.35;
+  color: #222;
 }
 
 .p_hash{
   margin: 0 0 10px;
-  font-size: 1.25rem;
+  font-size: 11px;
   line-height: 1.4;
-  color: var(--main-gray);
+  color: rgba(0,0,0,.55);
 }
 
 .p_price{
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--b-color);
+  font-size: 12px;
+  font-weight: 900;
+  color: #222;
 }
-   /* 진행바  */
 
+/* 진행바 */
 .pick_progress{
-  width: 100%;
   margin-top: 18px;
   display: flex;
   justify-content: center;
 }
 
-.pick_progress .swiper_pagination{
+.pick_progress .swiper-pagination{
   position: static;
-  width: min(340px, 100%);
+  width: min(360px, 100%);
   height: 2px;
-  background: rgba(0,0,0,.12);
+  background: rgba(0,0,0,.15);
   border-radius: 999px;
   overflow: hidden;
 }
 
-.pick_progress .swiper_pagination-progressbar-fill{
+/* Swiper progressbar fill */
+.pick_progress .swiper-pagination-progressbar-fill{
   background: rgba(0,0,0,.55);
 }
 
-
-@media (max-width: 1100px){
+/* 반응형 */
+@media (max-width: 1024px){
   .pick .pick_inner{
-    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+
+  .pick_head{
+    width: 100%;
+  }
+
+  .pick_title{
+    font-size: 2.25rem;
   }
 }
 
-@media (max-width: 600px){
-  .pick .pick_inner{
-    padding: 70px 0 60px;
+@media (max-width: 768px){
+  .pick_title{
+    font-size: 2rem;
   }
 }
+
+
 /* EVENT */
 .event{
   width: 100%;
