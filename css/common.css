@@ -56,15 +56,9 @@ body.no-scroll {
   left:0;
   width:100%;
   z-index:1000;
-
-  /* 🔥 반투명 블랙 */
   background:rgba(0,0,0,0.55);
-
-  /* 유리 느낌 */
   backdrop-filter:blur(10px);
   -webkit-backdrop-filter:blur(10px);
-
-  border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
 .header_inner{
@@ -194,7 +188,7 @@ body.no-scroll {
   transition: .3s;
 }
 
-.btn--brand:hover{
+.more_icon:hover{
   transform: translateY(-3px);
   background: var(--b-color);
   color: var(--w-color);
