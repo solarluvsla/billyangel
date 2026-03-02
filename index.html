@@ -27,53 +27,177 @@
 
 
 <body>
-  <header class="header">
-  <div class="header_inner">
-    <h1 class="logo"><a href="#">BILLYANGEL</a></h1>
+ <header class="siteHeader" data-header>
+  <div class="inner headerInner">
+    <h1 class="logo">
+      <a href="/" aria-label="BILLYANGEL 홈">BILLYANGEL</a>
+    </h1>
 
-    <nav>
-      <ul class="gnb">
-        <li>
-          <a href="#">브랜드</a>
-          <ul class="sub">
-            <li><a href="#">브랜드 스토리</a></li>
-            <li><a href="#">파티쉐’s Choice</a></li>
-          </ul>
+    <!-- GNB -->
+    <nav class="gnb" aria-label="주요 메뉴">
+      <ul class="gnbList" role="menubar">
+        <!-- 브랜드 -->
+        <li class="gnbItem hasMega" role="none">
+          <a class="gnbLink" href="/brand" role="menuitem" aria-haspopup="true">
+            브랜드
+          </a>
+
+          <!-- Mega Panel (Full-width) -->
+          <div class="mega" role="region" aria-label="브랜드 메뉴">
+            <div class="inner megaInner">
+              <div class="megaCols">
+                <!-- 1열: 브랜드 -->
+                <div class="megaCol">
+                  <ul class="megaList">
+                    <li><a href="/brand/story">브랜드 스토리</a></li>
+                    <li><a href="/brand/chef-choice">쉐프 초이스</a></li>
+                  </ul>
+                </div>
+
+                <!-- 2열: 메뉴 -->
+                <div class="megaCol">
+                  <ul class="megaList">
+                    <li><a href="/menu/cake">케이크</a></li>
+                    <li><a href="/menu/party">파티용품</a></li>
+                  </ul>
+                </div>
+
+                <!-- 3열: 이벤트 (현재 빈칸 유지) -->
+                <div class="megaCol">
+                  <ul class="megaList">
+                    <!-- 비워둠 -->
+                  </ul>
+                </div>
+
+                <!-- 4열: 매장정보 (현재 빈칸 유지) -->
+                <div class="megaCol">
+                  <ul class="megaList">
+                    <!-- 비워둠 -->
+                  </ul>
+                </div>
+
+                <!-- 5열: 커뮤니티 -->
+                <div class="megaCol">
+                  <ul class="megaList">
+                    <li><a href="/community/notice">공지사항</a></li>
+                    <li><a href="/community/guide">이용안내</a></li>
+                    <li><a href="/community/faq">자주묻는질문</a></li>
+                  </ul>
+                </div>
+              </div><!-- /.megaCols -->
+            </div><!-- /.megaInner -->
+          </div><!-- /.mega -->
         </li>
 
-        <li>
-          <a href="#">메뉴</a>
-          <ul class="sub">
-            <li><a href="#">케이크</a></li>
-            <li><a href="#">파티용품</a></li>
-          </ul>
+        <!-- 메뉴 -->
+        <li class="gnbItem hasMega is-active" role="none">
+          <a class="gnbLink" href="/menu" role="menuitem" aria-haspopup="true" aria-current="page">
+            메뉴
+          </a>
+
+          <div class="mega" role="region" aria-label="메뉴">
+            <div class="inner megaInner">
+              <div class="megaCols">
+                <div class="megaCol">
+                  <ul class="megaList">
+                    <li><a href="/brand/story">브랜드 스토리</a></li>
+                    <li><a href="/brand/chef-choice">쉐프 초이스</a></li>
+                  </ul>
+                </div>
+
+                <div class="megaCol">
+                  <ul class="megaList">
+                    <li><a href="/menu/cake">케이크</a></li>
+                    <li><a href="/menu/party">파티용품</a></li>
+                  </ul>
+                </div>
+
+                <div class="megaCol">
+                  <ul class="megaList">
+                    <!-- 이벤트(비워둠) -->
+                  </ul>
+                </div>
+
+                <div class="megaCol">
+                  <ul class="megaList">
+                    <!-- 매장정보(비워둠) -->
+                  </ul>
+                </div>
+
+                <div class="megaCol">
+                  <ul class="megaList">
+                    <li><a href="/community/notice">공지사항</a></li>
+                    <li><a href="/community/guide">이용안내</a></li>
+                    <li><a href="/community/faq">자주묻는질문</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </li>
 
-        <li><a href="#">매장정보</a></li>
-        <li><a href="#">이벤트</a></li>
+        <!-- 이벤트 -->
+        <li class="gnbItem hasMega" role="none">
+          <a class="gnbLink" href="/event" role="menuitem" aria-haspopup="true">이벤트</a>
 
-        <li>
-          <a href="#">커뮤니티</a>
-          <ul class="sub">
-            <li><a href="#">공지사항</a></li>
-            <li><a href="#">이용안내</a></li>
-            <li><a href="#">자주묻는 질문</a></li>
-          </ul>
+          <div class="mega" role="region" aria-label="이벤트">
+            <div class="inner megaInner">
+              <div class="megaCols">
+                <div class="megaCol"><ul class="megaList"><li><a href="/brand/story">브랜드 스토리</a></li><li><a href="/brand/chef-choice">쉐프 초이스</a></li></ul></div>
+                <div class="megaCol"><ul class="megaList"><li><a href="/menu/cake">케이크</a></li><li><a href="/menu/party">파티용품</a></li></ul></div>
+                <div class="megaCol"><ul class="megaList"></ul></div>
+                <div class="megaCol"><ul class="megaList"></ul></div>
+                <div class="megaCol"><ul class="megaList"><li><a href="/community/notice">공지사항</a></li><li><a href="/community/guide">이용안내</a></li><li><a href="/community/faq">자주묻는질문</a></li></ul></div>
+              </div>
+            </div>
+          </div>
         </li>
-      </ul><!-- //.gnb -->
+
+        <!-- 매장정보 -->
+        <li class="gnbItem hasMega" role="none">
+          <a class="gnbLink" href="/store" role="menuitem" aria-haspopup="true">매장정보</a>
+
+          <div class="mega" role="region" aria-label="매장정보">
+            <div class="inner megaInner">
+              <div class="megaCols">
+                <div class="megaCol"><ul class="megaList"><li><a href="/brand/story">브랜드 스토리</a></li><li><a href="/brand/chef-choice">쉐프 초이스</a></li></ul></div>
+                <div class="megaCol"><ul class="megaList"><li><a href="/menu/cake">케이크</a></li><li><a href="/menu/party">파티용품</a></li></ul></div>
+                <div class="megaCol"><ul class="megaList"></ul></div>
+                <div class="megaCol"><ul class="megaList"></ul></div>
+                <div class="megaCol"><ul class="megaList"><li><a href="/community/notice">공지사항</a></li><li><a href="/community/guide">이용안내</a></li><li><a href="/community/faq">자주묻는질문</a></li></ul></div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <!-- 커뮤니티 -->
+        <li class="gnbItem hasMega" role="none">
+          <a class="gnbLink" href="/community" role="menuitem" aria-haspopup="true">커뮤니티</a>
+
+          <div class="mega" role="region" aria-label="커뮤니티">
+            <div class="inner megaInner">
+              <div class="megaCols">
+                <div class="megaCol"><ul class="megaList"><li><a href="/brand/story">브랜드 스토리</a></li><li><a href="/brand/chef-choice">쉐프 초이스</a></li></ul></div>
+                <div class="megaCol"><ul class="megaList"><li><a href="/menu/cake">케이크</a></li><li><a href="/menu/party">파티용품</a></li></ul></div>
+                <div class="megaCol"><ul class="megaList"></ul></div>
+                <div class="megaCol"><ul class="megaList"></ul></div>
+                <div class="megaCol"><ul class="megaList"><li><a href="/community/notice">공지사항</a></li><li><a href="/community/guide">이용안내</a></li><li><a href="/community/faq">자주묻는질문</a></li></ul></div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
     </nav>
 
-    <div class="right">
-      <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-      <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-      <a href="#"><i class="fa-solid fa-user"></i></a>
-      <ul id="hamMenu">
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul><!-- //.hamMenu -->
-    </div><!-- //.right -->
-  </div><!-- //.header_inner -->
+    <!-- util -->
+    <div class="headerUtil">
+      <button class="iconBtn" type="button" aria-label="검색">🔍</button>
+      <button class="iconBtn" type="button" aria-label="장바구니">🛒</button>
+    </div>
+  </div>
+
+  <!-- dim (필요 시 CSS/JS로 제어) -->
+  <div class="headerDim" aria-hidden="true"></div>
 </header>
 
   <!-- Hero -->
@@ -154,7 +278,7 @@
         </div><!-- //.contents -->
         <div class="b_card">
           <article class="benefit_wrap">
-            <div class="benefit_icon"><img src="./asset/icon/free.png" alt="무료배송"></div>
+            <div class="benefit_icon"><img src="./asset/icon/free2.png" alt="무료배송"></div>
             <div class="txt_bottom">
               <h3>무료 배송</h3>
               <span>케이크 전 상품 무료 배송</span>
@@ -162,7 +286,7 @@
             </div><!-- //.txt_bottom -->
           </article><!-- //.benefit_wrap -->
           <article class="benefit_wrap">
-            <div class="benefit_icon"><img src="./asset/icon/save.png" alt="10% 포인트 적립"></div>
+            <div class="benefit_icon"><img src="./asset/icon/save2.png" alt="10% 포인트 적립"></div>
             <div class="txt_bottom">
               <h3>매장 픽업 적립</h3>
               <span>결제 시 10% 적립</span>
@@ -170,7 +294,7 @@
             </div><!-- //.txt_bottom -->
           </article><!-- //.benefit_wrap -->
           <article class="benefit_wrap">
-            <div class="benefit_icon"><img src="asset/icon/kakao.png" alt="할인쿠폰"></div>
+            <div class="benefit_icon"><img src="asset/icon/kakao2.png" alt="할인쿠폰"></div>
             <div class="txt_bottom">
               <h3>카카오톡 혜택</h3>
               <span>할인쿠폰 100% 증정</span>
