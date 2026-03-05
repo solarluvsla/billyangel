@@ -27,53 +27,73 @@
 
 
 <body>
-  <header class="header">
-  <div class="header_inner">
+ <header class="siteHeader">
+  <div class="inner headerInner">
     <h1 class="logo"><a href="#">BILLYANGEL</a></h1>
 
-    <nav>
-      <ul class="gnb">
-        <li>
-          <a href="#">브랜드</a>
-          <ul class="sub">
-            <li><a href="#">브랜드 스토리</a></li>
-            <li><a href="#">파티쉐’s Choice</a></li>
-          </ul>
-        </li>
+    <nav class="gnb" >
+      <ul class="gnbList">
+        <li class="gnbItem"><a class="gnbLink" href="#">브랜드</a></li>
+        <li class="gnbItem"><a class="gnbLink" href="#">메뉴</a></li>
+        <li class="gnbItem"><a class="gnbLink" href="#">매장정보</a></li>
+        <li class="gnbItem"><a class="gnbLink" href="#">이벤트</a></li>
+        <li class="gnbItem"><a class="gnbLink" href="#">커뮤니티</a></li>
+      </ul><!-- //.gnbList -->
 
-        <li>
-          <a href="#">메뉴</a>
-          <ul class="sub">
-            <li><a href="#">케이크</a></li>
-            <li><a href="#">파티용품</a></li>
-          </ul>
-        </li>
+      <div class="mega">
+        <div class="inner megaInner">
+          <div class="megaCols">
+            <div class="megaCol">
+              <ul class="megaList">
+                <li><a href="#">브랜드 스토리</a></li>
+                <li><a href="#">쉐프 초이스</a></li>
+              </ul><!-- //.megaList -->
+            </div><!-- //.megaCol -->
 
-        <li><a href="#">매장정보</a></li>
-        <li><a href="#">이벤트</a></li>
+            <div class="megaCol">
+              <ul class="megaList">
+                <li><a href="#">케이크</a></li>
+                <li><a href="#">파티용품</a></li>
+              </ul><!-- //.megaList -->
+            </div><!-- //.megaCol -->
 
-        <li>
-          <a href="#">커뮤니티</a>
-          <ul class="sub">
-            <li><a href="#">공지사항</a></li>
-            <li><a href="#">이용안내</a></li>
-            <li><a href="#">자주묻는 질문</a></li>
-          </ul>
-        </li>
-      </ul>
+            <div class="megaCol">
+              <ul class="megaList">
+              </ul><!-- //.megaList -->
+            </div><!-- //.megaCol -->
+
+            <div class="megaCol">
+              <ul class="megaList">
+              </ul><!-- //.megaList -->
+            </div><!-- //.megaCol -->
+
+            <div class="megaCol">
+              <ul class="megaList">
+                <li><a href="#">공지사항</a></li>
+                <li><a href="#">이용안내</a></li>
+                <li><a href="#">자주묻는질문</a></li>
+              </ul><!-- //.megaList -->
+            </div><!-- //.megaCol -->
+          </div><!-- //.megaCols -->
+        </div><!-- //.megaInner -->
+      </div><!-- //.mega -->
     </nav>
 
     <div class="right">
-      <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-      <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-      <a href="#"><i class="fa-solid fa-user"></i></a>
+      <a href="#"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></a>
+      <a href="#"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i></a>
+      <a href="#"><i class="fa-solid fa-user" aria-hidden="true"></i></a>
+
       <ul id="hamMenu">
         <li></li>
         <li></li>
         <li></li>
-      </ul>
-    </div>
-  </div>
+      </ul><!-- //.hamMenu -->
+    </div><!-- //.right -->
+  </div><!-- //.headerInner -->
+
+  <div class="headerDim">
+  </div><!-- //.headerDim -->
 </header>
 
   <!-- Hero -->
@@ -154,7 +174,7 @@
         </div><!-- //.contents -->
         <div class="b_card">
           <article class="benefit_wrap">
-            <div class="benefit_icon"><i class="fa-solid fa-truck"></i></div>
+            <div class="benefit_icon"><img src="./asset/icon/free2.png" alt="무료배송"></div>
             <div class="txt_bottom">
               <h3>무료 배송</h3>
               <span>케이크 전 상품 무료 배송</span>
@@ -162,7 +182,7 @@
             </div><!-- //.txt_bottom -->
           </article><!-- //.benefit_wrap -->
           <article class="benefit_wrap">
-            <div class="benefit_icon"><i class="fa-solid fa-gift"></i></div>
+            <div class="benefit_icon"><img src="./asset/icon/save2.png" alt="10% 포인트 적립"></div>
             <div class="txt_bottom">
               <h3>매장 픽업 적립</h3>
               <span>결제 시 10% 적립</span>
@@ -170,7 +190,7 @@
             </div><!-- //.txt_bottom -->
           </article><!-- //.benefit_wrap -->
           <article class="benefit_wrap">
-            <div class="benefit_icon"><i class="fa-solid fa-comment"></i></div>
+            <div class="benefit_icon"><img src="asset/icon/kakao2.png" alt="할인쿠폰"></div>
             <div class="txt_bottom">
               <h3>카카오톡 혜택</h3>
               <span>할인쿠폰 100% 증정</span>

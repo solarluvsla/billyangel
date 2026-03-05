@@ -1,5 +1,6 @@
 @charset "utf-8";
 
+/* 히어로 */
 .main_visual{
   width: 100%;
   min-height: 100vh;/* 브라우저 화면 높이, 최소 높이를 화면 높이만큼 확보 */
@@ -66,7 +67,7 @@
   z-index: 2;
 }
 
-/* ✅ 캡션 */
+/* 캡션 */
 .main_visual .m_caption{
   display: inline-block;/* 줄바꿈 없이 내용만큼만 영역 차지 */
   font-size: 1.25rem;
@@ -198,14 +199,14 @@
 }
 
 
-
+/* 혜택 */
 .benefit {
   background: var(--w-color);
   padding: 0;
 }
 
 .benefit .benefit_inner {
-  padding: 90px 0 100px;
+  padding: 90px 0 100px; /* 위 여백 90px 아래 여백 100px */
 }
 
 
@@ -249,79 +250,95 @@
 }
 
 /* 카드 영역 */
-.benefit .b_card {
+.benefit .b_card{
   display: flex;
   justify-content: center;
   gap: 80px;
   flex-wrap: wrap;
 }
 
-/* 카드 */
-.benefit .benefit_wrap {
-  width: 450px;
-  min-height: 260px;
-  padding: 44px 46px;
-  margin-bottom: 30px;
+/* 카드: 중앙 정렬형 */
+.benefit .benefit_wrap{
+  width: 320px;
+  padding: 22px 18px 24px;
   border-radius: var(--round);
-  background: var(--main-yellow-l);
-  box-shadow:
-    0 20px 25px -5px rgba(164, 161, 151, .08),
-    0 8px 10px -6px rgba(164, 161, 151, .10);
+  background: transparent;
   display: flex;
   flex-direction: column;
-  gap: 26px;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  white-space: nowrap;
+  transition: .25s;
 }
 
 /* 아이콘 */
-.benefit .benefit_icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 16px;
+.benefit .benefit_icon{
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #F6339A 0%, #FB64B6 100%);
+  transition: transform .25s ease;
 }
 
-.benefit .benefit_icon i {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--w-color);
+/* ✅ 이미지가 원에 꽉 차게 */
+.benefit .benefit_icon img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-/* 텍스트 */
-.benefit .txt_bottom {
+/* 텍스트 영역 */
+.benefit .txt_bottom{
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
+  gap: 8px;
 }
 
-.benefit .txt_bottom h3 {
-  margin: 0 0 8px;
-  font-size: 2rem;
+
+.benefit .txt_bottom h3{
+  margin: 0;
+  font-size: 1.75rem;
   font-weight: 700;
   color: var(--b-color);
 }
 
-.benefit .txt_bottom span {
+.benefit .txt_bottom span{
   display: block;
-  margin-bottom: 8px;
-  font-size: 1.5rem;
-  font-weight: 300;
-  color: var(--main-color);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--main-red);
 }
 
-.benefit .txt_bottom p {
+.benefit .txt_bottom p{
   margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.55;
+  line-height: 1.5;
   color: var(--main-gray);
 }
-
-.benefit .txt_bottom em {
+.benefit .txt_bottom em{
   font-weight: 700;
 }
+
+/* hover */
+.benefit .benefit_wrap:hover{
+  background: var(--main-yellow-l);
+  transform: translateY(-6px);
+}
+
+.benefit .benefit_wrap:hover .benefit_icon{
+  transform: scale(1.04);
+}
+
+.benefit .benefit_wrap:hover .txt_bottom{
+  transform: scale(1.02);
+  transition: transform .25s ease;
+}
+
 
 /* 하단 버튼 */
 .benefit .more {
@@ -429,6 +446,7 @@
   padding: 40px;
   color: var(--b-color);
   box-shadow: 0 18px 40px rgba(0,0,0,.14);
+  
 }
 
 /* 썸네일 */

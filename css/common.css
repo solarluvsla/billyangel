@@ -2,6 +2,14 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
 
 :root {
+  --cream:#F5EFE6;
+  --caramel:#B98555;
+  --deep:#2B2B2B;
+  --muted:rgba(43,43,43,.68);
+  --line:rgba(255,255,255,.18);
+  --line2:rgba(0,0,0,.10);
+  --mega-bg: rgba(45, 45, 45, 0.86);  
+  --t: .22s cubic-bezier(.2,.8,.2,1);
   --main-color: #e84393;
   --main-hotpink: #e84393;
   --main-pink: #fd79a8;
@@ -21,6 +29,7 @@
   --b-color: #222;
   --w-color: #fff;
   --round: 24px;
+  --gnb-gap: clamp(22px, 3vw, 54px);   /* 메뉴 간격 */
 }
 
 * {
@@ -46,14 +55,8 @@ body.no-scroll {
   margin:0 auto;
 }
 
-/* =========================
-   HEADER
-========================= */
-
-.header{
-  position:fixed;
-  top:0;
-  left:0;
+/* HEADER */
+.siteHeader{
   width:100%;
   z-index:1000;
   background:rgba(0,0,0,0.55);
@@ -104,97 +107,275 @@ body.no-scroll {
 .sub{
   position:absolute;
   top:80px;
+  height:64px;
+  position:fixed;
   left:0;
-  min-width:160px;
-
-  background:rgba(0,0,0,0.85);
-  backdrop-filter:blur(10px);
-
-  padding:15px 0;
-
-  opacity:0;
-  visibility:hidden;
-  transform:translateY(10px);
-  transition:.25s ease;
+  top:0;
+  z-index:2000;
+  background:var(--mega-bg);
+  backdrop-filter:blur(12px); /* 헤더 뒤 배경을 흐림 처리 */
+  color:var(--w-color);
 }
 
-.sub li a{
-  display:block;
-  padding:8px 20px;
-  font-size:14px;
-  color:#fff;
+.headerInner{
+  height:100%;
+  padding:0 32px;
+  display:flex;
+  align-items:center;
+position: relative; /* gnb absolute 기준점 */
 }
 
-.sub li a:hover{
-  background:rgba(255,255,255,0.1);
+.siteHeader .logo a{
+  display:inline-flex; /* a태그 inline(높이 가질 수 없음) / 내부 정렬 가능 + inline 유지 */
+  align-items:center;
+  height:64px;
+  font-weight:800;
+  letter-spacing:.5px;
+  color:var(--w-color);
+  text-decoration:none;
+  white-space:nowrap;
 }
 
-/* hover 시 열림 */
-.gnb > li:hover .sub{
+/* right */
+.siteHeader .right{
+  margin-left:auto;          /* ✅ 오른쪽 끝으로 밀기 */
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+.siteHeader .right a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:36px;
+  height:36px;
+  color:var(--w-color);
+  opacity:.9;
+  text-decoration:none;
+}
+.siteHeader .right a:hover{
   opacity:1;
-  visibility:visible;
-  transform:translateY(0);
+}
+
+.siteHeader #hamMenu{
+  width:38px;
+  height:38px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:6px;
+  cursor:pointer;
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+.siteHeader #hamMenu li{
+  width:22px;
+  height:2px;
+  background:var(--w-color);
+}
+
+/* gnb */
+.siteHeader .gnb{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+/* 열 정렬 핵심: GNB/MEGA 모두 동일한 gap + “콘텐츠 폭만큼” + 가운데 */
+.siteHeader .gnbList,
+.siteHeader .megaCols{
+  display:flex;
+  gap:var(--gnb-gap);
+  width:max-content;
+  margin:0 auto;
+}
+
+
+.siteHeader .gnbLink{
+  width:120px;           
+  justify-content:center;
+  position:relative;        /* 밑줄(::after) 기준점 */
+  display:inline-flex;
+  align-items:center;
+  height:64px;
+  padding:0 8px;
+  font-weight:800;
+  color:rgba(255,255,255,.92);
+  white-space:nowrap;
+  text-decoration:none;
+}
+
+/* GNB 메뉴 아래 애니메이션 밑줄(기본 숨김) */
+.siteHeader .gnbLink::after{
+  content:"";
+  position:absolute;        /* gnbLink를 기준으로 움직임 */
+  left:10px;
+  right:10px;
+  bottom:12px;
+  height:2px;
+  background:var(--caramel);
+  border-radius:999px;
+  transform:scaleX(0);      /* 가로 크기를 0으로 축소 */
+  opacity:0;                /* 완전히 투명 */
+  transition:transform var(--t), opacity var(--t);
+}
+
+/* hover/focus 시에만 밑줄 */
+.siteHeader .gnbItem:hover > .gnbLink::after,
+.siteHeader .gnbItem:focus-within > .gnbLink::after{
+  transform:scaleX(1);
+  opacity:1;
+}
+
+/* Mega Panel */
+.siteHeader .mega{
+  position:fixed;
+  left:0;
+  top:64px;
+  width:100%;
+  background:var(--mega-bg);
+  backdrop-filter:blur(12px);
+  border-top:1px solid rgba(255,255,255,.10);
+
+  /* hidden */
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  pointer-events:none;
+  transition:max-height var(--t), opacity var(--t);
+}
+
+/* 어떤 메뉴든 올리면(gnb hover) mega 1개가 열림 */
+.siteHeader .gnb:hover .mega,
+.siteHeader .gnb:focus-within .mega{
+  max-height:340px;
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* mega 내부 여백(상하만) */
+.siteHeader .megaInner{
+  padding:24px 0 28px;
+}
+
+/* mega 컬럼 래퍼 */
+.siteHeader .megaCols{
+  align-items:flex-start; /* 위쪽 기준 정렬 */
+}
+
+/* mega 각 칸 폭 고정(gnbLink와 동일) */
+.siteHeader .megaCol{
+  flex:0 0 120px;
+  min-width:120px;
+  padding:0;
+  opacity:.55;
+  transition:opacity var(--t), background var(--t);
+}
+
+.siteHeader .megaCol:hover{
+  opacity:1;
+}
+
+.siteHeader .megaList{
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+
+.siteHeader .megaList a{
+  display:block;
+  padding:10px 0;
+  text-align:center;
+  color:rgba(255,255,255,.78);
+  font-weight:700;
+  text-decoration:none;
+}
+.siteHeader .megaList a:hover{
+  color:var(--w-color);
+  text-decoration:underline;
+  text-underline-offset:6px;
+  text-decoration-thickness:1px;
 }
 
 /* =========================
-   RIGHT ICONS
+   Dim (옵션)
 ========================= */
-
-.right{
-  display:flex;
-  align-items:center;
-  gap:20px;
+.siteHeader .headerDim{
+  position:fixed;
+  left:0;
+  top:64px;
+  width:100%;
+  height:calc(100vh - 64px);
+  background:rgba(0,0,0,.25);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity var(--t);
 }
 
-.right a{
-  color:#fff;
-  font-size:18px;
+/* ✅ gnb hover일 때만 dim */
+.siteHeader .gnb:hover ~ .headerDim,
+.siteHeader .gnb:focus-within ~ .headerDim{
+  opacity:1;
+  pointer-events:auto;
 }
 
-/* 햄버거 */
-#hamMenu{
-  display:flex;
-  flex-direction:column;
-  gap:5px;
-  cursor:pointer;
-}
-
-#hamMenu li{
-  width:22px;
-  height:2px;
-  background:#fff;
-}
-
-/* mobile: 기존 on 유지 */
+/* =========================
+   Mobile
+========================= */
 @media (max-width:1024px){
-  header.mega_open .ham_menu{ display:none !important; }
+  .siteHeader .gnb{ display:none; }
+  .siteHeader .mega{ display:none; }
+  .siteHeader .headerDim{ display:none; }
 }
-
 
 .more_icon{
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: 14px 26px;
-  border-radius: var(--round);
-  background: linear-gradient(135deg, #F6339A 0%, #FB64B6 100%);
-  border: none;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.02em;
   color: var(--w-color);
-  box-shadow: 0 12px 28px rgba(246,51,154,0.35);
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.4px;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.35);
-  transition: .3s;
+  background: linear-gradient(
+    180deg,
+    #E6C98B 0%,
+    #C89B5E 45%,
+    #B98555 100%
+  );
+  box-shadow: 
+    0 12px 28px rgba(185,133,85,.28);
+  border: 1px solid rgba(255,255,255,.35);
+  transition: all .22s cubic-bezier(.2,.8,.2,1);
+  position: relative;
 }
 
 .more_icon:hover{
-  transform: translateY(-3px);
-  background: var(--b-color);
-  color: var(--w-color);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+  background: linear-gradient(
+    180deg,
+    #F0D79F 0%,
+    #C89B5E 60%,
+    #A76D43 100%
+  );
+  transform: translateY(-2px);
 }
 
+.more_icon::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 6%;
+  width: 88%;
+  height: 30%;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,.6),
+    rgba(255,255,255,0)
+  );
+}
 
 /* footer */
 .footer {
