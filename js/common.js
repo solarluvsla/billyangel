@@ -9,11 +9,23 @@ $('nav ul.gnb').hover(
     }
   );
 
-  //main_visual
-  $('.main_visual ul li:gt(0)').hide();
-  setInterval(function () {
-    $('.main_visual ul li').first().fadeOut().next().fadeIn().end().appendTo('.main_visual ul');
-  },16000)
-
-
+//main_visual
+const mainSwiper = new Swiper('.main_visual .swiper', {
+    effect: 'fade', 
+    fadeEffect: {
+      crossFade: true 
+    },
+    loop: true, 
+    autoplay: {
+      delay: 4000, 
+      disableOnInteraction: false, 
+    },
+   
+    on: {
+      slideChange: function () {
+        let currentNum = this.realIndex + 1;
+        $('.main_visual .pager .num').text('0' + currentNum);
+      }
+    }
+  });
 });
