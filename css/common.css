@@ -8,8 +8,6 @@
   --muted: rgba(43, 43, 43, .68);
   --line: rgba(255, 255, 255, .18);
   --line2: rgba(0, 0, 0, .10);
-  --mega-bg: rgba(45, 45, 45, 0.86);
-  --t: .22s cubic-bezier(.2, .8, .2, 1);
   --main-color: #e84393;
   --main-hotpink: #e84393;
   --main-pink: #fd79a8;
@@ -30,7 +28,6 @@
   --w-color: #fff;
   --round: 24px;
   --gnb-gap: clamp(22px, 3vw, 54px);
-  /* 메뉴 간격 */
 }
 
 * {
@@ -56,70 +53,138 @@ body.no-scroll {
   margin: 0 auto;
 }
 
-/* HEADER */
 header {
   width: 100%;
   height: 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative; 
+  z-index: 100; 
+  padding: 0 40px; 
+  background:rgba(18, 24, 24, 0.86);
+  backdrop-filter: blur(12px);
+  color: var(--w-color);
+}
+
+
+header h1 {
+  font-size: 20px;
+  z-index: 30; 
   position: relative;
-  z-index: 10;
 }
 
 nav {
-  width: 70%;
-  margin-right: 10px;
+  flex: 1; 
+  margin: 0 50px; 
+  height: 100%;
+  color:var(--w-color);
 }
 
 nav ul.gnb {
   width: 100%;
+  height: 100%;
   display: flex;
+  justify-content: center; 
 }
 
-nav ul.gnb>li {
+nav ul.gnb > li {
   flex: 1;
+  max-width: 150px; 
   text-align: center;
-  position: relative;
+  position: relative; 
 }
 
-nav ul.gnb>li>a {
+nav ul.gnb > li > a {
   display: block;
   width: 100%;
-  height: 40px;
-  line-height: 40px;
-  background: #5436ed;
-  color: #fff;
+  height: 100px; 
+  line-height: 100px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  position: relative;
+  z-index: 30; 
+  transition: color 0.3s;
 }
 
-nav ul.gnb>li:hover>a {
-  background: #c0b6f3;
+nav ul.gnb > li:hover > a {
+  color: var(--caramel);
 }
 
-nav ul.gnb>li>ul.sub {
+
+nav ul.gnb > li > ul.sub {
   position: absolute;
+  top: 100px;
   left: 0;
-  top: 40px;
   width: 100%;
   display: none;
+  z-index: 20; 
+  padding: 20px 0;
 }
 
-nav ul.gnb>li>ul.sub>li {
+nav ul.gnb > li > ul.sub > li {
   width: 100%;
-  height: 36px;
-  line-height: 36px;
+  line-height: 2.2;
+  white-space: nowrap;
 }
 
-nav ul.gnb>li>ul.sub>li>a {
+nav ul.gnb > li > ul.sub > li > a {
   display: block;
-  background: #5436ed;
-  color: #fff;
+  color: var(--main-gray);
+  font-size: 0.95rem;
+  transition: color 0.3s;
 }
 
-nav ul.gnb>li>ul.sub>li:hover>a {
-  background: #c0b6f3;
+nav ul.gnb > li > ul.sub > li:hover > a {
+  color: var(--caramel);
+  font-weight: 600;
 }
 
+.headerDim {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  height: 180px; 
+  background-color: var(--w-color);
+  border-top: 1px solid var(--line2);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+  display: none;
+  z-index: 15;
+}
+
+/* 우측 아이콘 영역 */
+.right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  z-index: 30;
+}
+
+.right a {
+  color: var(--deep);
+  font-size: 1.2rem;
+}
+
+/* 햄버거 메뉴 아이콘 리셋 */
+#hamMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+#hamMenu li {
+  width: 24px;
+  height: 2px;
+  background-color: var(--deep);
+}
+
+
+/* =========================================
+   BUTTONS & OTHERS
+========================================= */
 .more_icon {
   display: inline-flex;
   align-items: center;
@@ -130,22 +195,15 @@ nav ul.gnb>li>ul.sub>li:hover>a {
   font-size: 15px;
   letter-spacing: 0.02em;
   color: var(--w-color);
-  background: linear-gradient(180deg,
-      #E6C98B 0%,
-      #C89B5E 45%,
-      #B98555 100%);
-  box-shadow:
-    0 12px 28px rgba(185, 133, 85, .28);
+  background: linear-gradient(180deg, #E6C98B 0%, #C89B5E 45%, #B98555 100%);
+  box-shadow: 0 12px 28px rgba(185, 133, 85, .28);
   border: 1px solid rgba(255, 255, 255, .35);
   transition: all .22s cubic-bezier(.2, .8, .2, 1);
   position: relative;
 }
 
 .more_icon:hover {
-  background: linear-gradient(180deg,
-      #F0D79F 0%,
-      #C89B5E 60%,
-      #A76D43 100%);
+  background: linear-gradient(180deg, #F0D79F 0%, #C89B5E 60%, #A76D43 100%);
   transform: translateY(-2px);
 }
 
@@ -157,12 +215,12 @@ nav ul.gnb>li>ul.sub>li:hover>a {
   width: 88%;
   height: 30%;
   border-radius: 999px;
-  background: linear-gradient(180deg,
-      rgba(255, 255, 255, .6),
-      rgba(255, 255, 255, 0));
+  background: linear-gradient(180deg, rgba(255, 255, 255, .6), rgba(255, 255, 255, 0));
 }
 
-/* footer */
+/* =========================================
+   FOOTER
+========================================= */
 .footer {
   position: relative;
   background: #747b82;
