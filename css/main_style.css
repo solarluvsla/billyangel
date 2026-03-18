@@ -58,10 +58,10 @@ width: 100%;
   transform: translateX(-50%);
   width: 90%;
   max-width: 1500px;
-  bottom: 22vh;
+  bottom: 20vh;
   display: flex;
   flex-direction: column;
-  gap: 20px; 
+  gap: 25px; 
   color: var(--w-color);
   z-index: 2;
 }
@@ -93,16 +93,10 @@ width: 100%;
 }
 
 .main_visual .swiper-slide .more {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%); /* 정확히 가운데 정렬을 위한 설정 */
-  width: 95%;
-  max-width: 1600px; /* 텍스트 영역(.txt_area)과 동일한 너비 기준 */
-  bottom: 22vh; /* 텍스트 아래쪽으로 떨어지도록 bottom 값으로 여백(위치) 확보 */
-  z-index: 10;
-  display: flex;
-  justify-content: flex-start; /* 텍스트의 시작점(좌측)에 맞춰 버튼 정렬 */
-  padding: 0;
+  position: static;
+  transform: none;
+  width: auto;
+  display: block; 
 }
 
 
@@ -197,15 +191,7 @@ width: 100%;
 }
 
 
-/* 캡션 */
-.benefit .contents .s_caption {
-  display: inline-block;
-  font-size: 1.25rem;
-  font-weight: 800;
-  letter-spacing: 1.2px;
-  color: var(--b-color);
-  opacity: .8;
-}
+
 
 /* 큰 제목 */
 .benefit .contents .tit {
@@ -1140,7 +1126,7 @@ width: 100%;
   width: 95%;
   max-width: 1000px;
   display: flex;
-  background-color: #FCFAEF;
+  background: var(--main-yellow-l);;
   border: 1px solid #EBE4DA;
   border-radius: 40px;
   padding: 40px;
@@ -1158,7 +1144,7 @@ width: 100%;
 }
 
 /* 우측 인터랙션 카드 영역 */
-.store_locator .info-box {
+.store_locator .info_box {
   flex: 1;
   background-color: #FFFFFF;
   border-radius: 24px;
@@ -1170,16 +1156,14 @@ width: 100%;
 .store_locator .search_section h3 {
   font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 6px;
   color: var(--b-color, #332D27);
 }
 
 .store_locator .search_section p {
   font-size: 1rem;
   color: #887B70;
-  margin-bottom: 20px;
+  padding: 8px 0;
 }
-
 /* 드롭다운 (셀렉트 박스) */
 .store_locator .search_section select {
   width: 100%;
@@ -1189,13 +1173,15 @@ width: 100%;
   border: 1px solid #E4D9CE;
   border-radius: 12px;
   background-color: #FAFAF8;
-  margin-bottom: 15px;
   outline: none;
   cursor: pointer;
   appearance: none;
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23887B70" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4"/></svg>');
   background-repeat: no-repeat;
   background-position: right 16px center;
+}
+.store_locator .more {
+  padding: 0 8px;
 }
 
 .store_locator .search_section select:focus {

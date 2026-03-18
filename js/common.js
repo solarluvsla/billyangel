@@ -27,9 +27,40 @@ $(function(){
         $('.main_visual .pager .num').text('0' + currentNum);
       }
     }
-  }); 
+  });
+  
+  // 3. pick (신규 케이크 슬라이더)
+  const pickSwiper = new Swiper('.pick_swiper', {
+    slidesPerView: 1.2,
+    spaceBetween: 20,
+    breakpoints: {
+      768: { slidesPerView: 2.2, spaceBetween: 20 },
+      1024: { slidesPerView: 3, spaceBetween: 30 },
+      1400: { slidesPerView: 3.5, spaceBetween: 40 }
+    },
+    pagination: {
+      el: '.pick_progress .swiper-pagination',
+      type: 'progressbar',
+    },
+    mousewheel: {
+      forceToAxis: true,
+    },
+    grabCursor: true,
+  });
 
-  // 매장 찾기
+  // 3-1. 하트 버튼(좋아요) 토글
+  $('.btn_like').on('click', function() {
+    $(this).toggleClass('is-active');
+    const icon = $(this).find('i');
+    
+    if ($(this).hasClass('is-active')) {
+      icon.removeClass('fa-regular').addClass('fa-solid');
+    } else {
+      icon.removeClass('fa-solid').addClass('fa-regular');
+    }
+  });
+
+  // 4. 매장 찾기 데이터
   const storeData = {
     jonggak: { time: "평일 08:30 - 22:00  라스트오더 21:30", phone: "02-2160-8488" },
     yeouido: { time: "평일 07:00 - 23:00  라스트오더 21:30 주말 08:00 - 22:00 라스트오더 21:30", phone: "070-4801-0141" },
@@ -44,18 +75,15 @@ $(function(){
     ansan: { time: "매일 12:00 - 22:00  라스트오더 21:30", phone: "031-413-1312" },
     suwon: { time: "매일 10:00 - 22:00", phone: "031-308-1005" },
     frombio: { time: "매일 08:00 - 20:00  라스트오더 19:30", phone: "070-4811-5945" },
-    pyeongtaek: { time: "매일 10:00 - 22:00", phone: "031-681-3888" }
+    pyengtaek: { time: "매일 10:00 - 22:00", phone: "031-681-3888" }
   };
 
-  // 초기화: 페이지 로드 시 첫 번째 옵션(종각역점)의 데이터로 세팅
+  // 매장찾기 초기화 및 이벤트
   $('#storeTime').text(storeData['jonggak'].time);
   $('#storePhone').text(storeData['jonggak'].phone);
 
-  // 2. select 박스 값이 바뀔 때(change) 이벤트 실행
   $('#regionSelect').on('change', function() {
-    const selectedValue = $(this).val(); // 선택된 옵션의 value 값 가져오기
-    
-  
+    const selectedValue = $(this).val();
     if (storeData[selectedValue]) {
       $('#storeTime').fadeOut(150, function() {
         $(this).text(storeData[selectedValue].time).fadeIn(150);

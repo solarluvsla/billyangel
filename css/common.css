@@ -23,6 +23,7 @@
   --main-aqua-d: #00cec9;
   --main-gray-l: #f6f6f6;
   --main-gray: #717171;
+  --main-gold: linear-gradient(180deg, #E6C98B 0%, #C89B5E 45%, #B98555 100%);
   --b-color: #222;
   --w-color: #fff;
   --round: 24px;
@@ -66,6 +67,17 @@ header {
   color: var(--w-color);
 }
 
+.s_caption {
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 4px;
+  background: var(--main-gold); /* 배경에 그라데이션 적용 */
+  -webkit-background-clip: text; /* 배경을 글자 영역에만 보여줌 */
+  background-clip: text;
+  color: transparent;           /* 원래 글자색을 투명하게 해서 배경이 보이게 함 */
+  opacity: .8;
+}
 
 header h1 {
   font-size: 20px;
@@ -212,8 +224,8 @@ nav ul.gnb > li > ul.sub > li:hover > a {
   top: 2px;
   left: 6%;
   width: 88%;
-  height: 30%;
-  border-radius: 999px;
+  height: 20%;
+  border-radius: 50%;
   background: linear-gradient(180deg, rgba(255, 255, 255, .6), rgba(255, 255, 255, 0));
 }
 
