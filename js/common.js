@@ -62,30 +62,16 @@ $(function(){
   
 
   //이벤트
-  $('.event_tabs .tab').on('click', function() {
-    // 5-1. 모든 탭에서 활성화 클래스 제거 후 클릭한 탭에만 추가
+$('.event_tabs .tab').on('click', function() {
+    const idx = $(this).index(); // 클릭한 버튼의 순서(0, 1, 2)
+    
+    // 버튼 스타일 변경
     $('.event_tabs .tab').removeClass('is_active');
     $(this).addClass('is_active');
-
-    // 5-2. 클릭한 탭의 인덱스 번호 가져오기 (0, 1, 2...)
-    const tabIdx = $(this).index();
-
-    // 5-3. (옵션) 탭에 따라 콘텐츠를 바꾸고 싶다면?
-    // 실제로는 각 탭에 맞는 데이터를 storeData처럼 객체로 관리하거나 
-    // 콘텐츠 박스를 여러 개 만들어놓고 .hide(), .show()로 제어합니다.
     
-    // 예시: 탭 클릭 시 배너 이미지만 살짝 바꿔보기 (테스트용)
-    const eventImages = [
-        "asset/img/t_membership_bn.jpg", // 1번째 탭 이미지
-        "asset/img/wish_event_bn.jpg",   // 2번째 탭 이미지
-        "asset/img/valentine_bn.jpg"     // 3번째 탭 이미지
-    ];
-    
-    if(eventImages[tabIdx]) {
-        $('.event_banner img').fadeOut(200, function() {
-            $(this).attr('src', eventImages[tabIdx]).fadeIn(200);
-        });
-    }
+    // 박스 전환
+    $('.event_box').hide();
+    $('.event_box').eq(idx).stop().fadeIn(500);
 });
 
   // 4. 매장 찾기 데이터

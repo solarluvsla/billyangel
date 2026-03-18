@@ -770,6 +770,17 @@ width: 100%;
   font-weight: 700;
 }
 
+
+.event_box {
+  display: none;
+  width: 100%;
+}
+
+.event_box:first-child {
+  display: block;
+}
+
+
 .event_layout {
   display: flex;
   gap: 80px;
