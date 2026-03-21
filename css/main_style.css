@@ -912,115 +912,145 @@ width: 100%;
 
 /* review */
 .review {
-
   width: 100%;
   height: 100vh;
   padding: 90px 0 80px;
   overflow: hidden;
-  color: #fff;
+  color: var(--b-color);
   background: var(--w-color);
   position: relative;
 }
 
-/* 오버레이 */
-.review::before {
+/* 🛑 [수정] 오버레이 전체 적용 제거 (전체 어둡게 방지) */
+/* .review::before {
   content: "";
   position: absolute;
   inset: 0;
   background: rgba(10, 18, 32, 0.55);
   pointer-events: none;
-}
+} */
 
 .review>* {
   position: relative;
 }
 
 /* Title */
+.review {
+    width: 100%;
+    /* height: 100vh; 제거: 컨텐츠 양에 따라 유연하게 늘어나도록 설정 */
+    background: #0a1220; /* 어두운 네이비톤 배경으로 고정 */
+    padding: 120px 0;
+    overflow: hidden; 
+    position: relative;
+    color: #fff;
+}
+
 .review .inner {
   display: flex;
-  flex-direction: column;
+  justify-content: center; /* 중앙 정렬 */
   align-items: center;
-  gap: 14px;
-  margin-bottom: 34px;
+  position: relative; /* More 버튼의 절대 위치 기준점 */
+  margin-bottom: 50px; /* 슬라이드와의 간격 */
+}
+
+.review .tit_area {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* 타이틀과 버튼 사이 간격 */
+  position: relative;
 }
 
 .review .tit_eng {
-  font-size: 28px;
+  margin: 0; /* 기본 마진 제거 */
+  font-size: 32px;
   font-weight: 800;
+  color: #fff;
   letter-spacing: 2px;
 }
 
-.review .more {
- margin: 0;
-  font-size: 48px;
-  font-weight: 600;
-  color: #222;
-  letter-spacing: -0.4px;
-}
-
-
-/* slide */
+/* 슬라이드 래퍼: 위아래 줄 사이의 간격 미세 조정 */
 .review .slide_wrap {
-  width: 100%;
-  overflow: hidden;
-  padding: 12px 0;
+    width: 100%;
+    overflow: visible; /* 카드 확대 시 잘림 방지 필수 */
+    margin: -10px 0;    /* 두 슬라이드 라인 사이의 틈 제거 */
+    padding: 30px 0;   /* 카드 확대 공간 확보 */
 }
 
-/* wrapper 가로 배치 */
-.review .swiper-wrapper {
-  display: flex;
-  gap: 18px;
-  align-items: stretch;
-  will-change: transform;
-  /* JS가 transform으로 움직이므로 transition 사용 X */
-}
 
-/* 카드 */
+/* --- 리뷰 카드 공통 스타일 --- */
 .review .swiper-slide.box {
-  flex: 0 0 auto;
-  width: 380px;
-  height: 470px;
-  border-radius: 14px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.10);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  backdrop-filter: blur(4px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, .20);
+    width: 400px; 
+    height: 480px; /* 고정 높이 */
+    background: rgba(255, 255, 255, 0.05); /* 은은한 유리 효과 */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    backdrop-filter: blur(15px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    will-change: transform;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
-.review .img_box,
-.review .img_box img {
-  width: 100%;
-  height: 100%;
+/* --- 상단 슬라이드: 마우스 올리면 확대 및 멈춤 --- */
+.review .slide_top .swiper-slide.box {
+    cursor: pointer;
+    z-index: 1;
 }
 
-.review .img_box img {
-  display: block;
-  object-fit: cover;
-  transition: transform .35s ease;
+.review .slide_top .swiper-slide.box:hover {
+    transform: scale(1.1) !important;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.1); /* 호버 시 약간 더 밝게 */
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
-.review .swiper-slide.box:hover img {
-  transform: scale(1.05);
+/* --- 하단 슬라이드: 배경 역할 (어둡게 고정) --- */
+.review .slide_bottom {
+    position: relative;
+    pointer-events: none; /* 하단 슬라이드는 마우스 반응 차단 */
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+.review .slide_bottom .swiper-slide.box {
+    opacity: 0.35; /* 상단보다 더 어둡게 배경화 */
+    transform: scale(1) !important; /* 절대 확대 금지 */
+}
+
+/* 하단 슬라이드 전용 어두운 그라디언트 오버레이 (줄 간격 선 완벽 제거) */
+.review .slide_bottom::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    background: linear-gradient(
+        to bottom,
+        rgba(10, 18, 32, 0) 0%, 
+        rgba(10, 18, 32, 0.7) 100%
+    );
+}
+
+/* 슬라이더 이동 선형 설정 (부드러운 무한루프) */
+.review .swiper-wrapper {
+    transition-timing-function: linear !important;
+}
+
+/* --- 반응형 설정 --- */
 @media (max-width: 1024px) {
-  .review .swiper-slide.box {
-    width: 300px;
-    height: 380px;
-  }
+    .review { padding: 80px 0; }
+    .review .swiper-slide.box {
+        width: 320px;
+        height: 400px;
+    }
 }
 
 @media (max-width: 600px) {
-  .review .swiper-slide.box {
-    width: 240px;
-    height: 320px;
-  }
+    .review .tit_eng { font-size: 26px; }
+    .review .swiper-slide.box {
+        width: 260px;
+        height: 340px;
+    }
 }
-
 /* MAP */
 .main_content {
     display: flex;

@@ -63,9 +63,9 @@ header {
   position: relative; 
   z-index: 100; 
   padding: 0 40px; 
-  background:rgba(18, 24, 24, 0.86);
+  background:rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(12px);
-  color: var(--w-color);
+  color: var(--main-gold);
 }
 
 .s_caption {
@@ -90,7 +90,7 @@ nav {
   flex: 1; 
   margin: 0 50px; 
   height: 100%;
-  color:var(--w-color);
+color: var(--b-color);
 }
 
 nav ul.gnb {
@@ -120,7 +120,7 @@ nav ul.gnb > li > a {
 }
 
 nav ul.gnb > li:hover > a {
-  color: var(--caramel);
+  color: var(--gold);
 }
 
 

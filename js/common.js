@@ -29,7 +29,7 @@ $(function(){
     }
   });
   
-  // 3. pick (신규 케이크 슬라이더)
+  //pick
   const pickSwiper = new Swiper('.pick_swiper', {
     slidesPerView: 1.2,
     spaceBetween: 20,
@@ -48,7 +48,7 @@ $(function(){
     grabCursor: true,
   });
 
-  // 3-1. 하트 버튼(좋아요) 토글
+  //하트 버튼 토글
   $('.btn_like').on('click', function() {
     $(this).toggleClass('is-active');
     const icon = $(this).find('i');
@@ -72,6 +72,71 @@ $('.event_tabs .tab').on('click', function() {
     // 박스 전환
     $('.event_box').hide();
     $('.event_box').eq(idx).stop().fadeIn(500);
+});
+
+//리뷰
+
+    // [1] 상단 슬라이더 설정
+    const swiperTop = new Swiper('.slide_top', {
+        loop: true,
+        speed: 8000,
+        slidesPerView: 'auto',
+        spaceBetween: 18,
+        allowTouchMove: false,
+        autoplay: {
+            delay: 0,
+            disableOnInteraction: false,
+            reverseDirection: true,
+        },
+        freeMode: true,
+    });
+
+    // [2] 하단 슬라이더 설정 (기존 유지)
+    const swiperBottom = new Swiper('.slide_bottom', {
+        loop: true,
+        speed: 8000,
+        slidesPerView: 'auto',
+        spaceBetween: 18,
+        allowTouchMove: false,
+        autoplay: {
+            delay: 0,
+            disableOnInteraction: false,
+        },
+        freeMode: true,
+    });
+
+    // [3] 상단 슬라이드 호버 제어 (안정화 로직)
+    $('.slide_top').on('mouseenter', function() {
+        // 자동 재생 멈춤
+        swiperTop.autoplay.stop();
+        
+        // 현재 wrapper의 위치값을 강제로 고정 (transition 제거)
+        const wrapper = $(this).find('.swiper-wrapper');
+        const transform = wrapper.css('transform');
+        wrapper.css({
+            'transform': transform,
+            'transition-duration': '0ms'
+        });
+    });
+
+    $('.slide_top').on('mouseleave', function() {
+        const wrapper = $(this).find('.swiper-wrapper');
+        
+        // 1. CSS로 강제 고정했던 속성들을 제거하여 Swiper에게 제어권 반환
+        wrapper.css({
+            'transition-duration': ''
+        });
+
+        // 2. Swiper 엔진 재가동 (매우 중요)
+        // 정지된 상태에서 엔진이 꼬이는 걸 방지하기 위해 update() 후 start()
+        swiperTop.update();
+        swiperTop.autoplay.start();
+        
+        // 3. 만약 여전히 안 움직인다면 미세한 강제 이동 명령 (치트키)
+        // 현재 인덱스로 아주 짧은 시간(1ms) 동안 이동하게 하여 엔진을 깨웁니다.
+        const currentIndex = swiperTop.activeIndex;
+        swiperTop.slideTo(currentIndex, 1, false);
+    });
 });
 
   // 4. 매장 찾기 데이터
@@ -106,6 +171,4 @@ $('.event_tabs .tab').on('click', function() {
         $(this).text(storeData[selectedValue].phone).fadeIn(150);
       });
     }
-  });
-
-}); //ready end
+  }); //ready end
