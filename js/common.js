@@ -74,70 +74,49 @@ $('.event_tabs .tab').on('click', function() {
     $('.event_box').eq(idx).stop().fadeIn(500);
 });
 
-//리뷰
+/* 리뷰 */
 
-    // [1] 상단 슬라이더 설정
-    const swiperTop = new Swiper('.slide_top', {
-        loop: true,
-        speed: 8000,
-        slidesPerView: 'auto',
-        spaceBetween: 18,
-        allowTouchMove: false,
-        autoplay: {
-            delay: 0,
-            disableOnInteraction: false,
-            reverseDirection: true,
-        },
-        freeMode: true,
-    });
+const topSlideCount = document.querySelectorAll('.slide_top .swiper-slide').length;
+const bottomSlideCount = document.querySelectorAll('.slide_bottom .swiper-slide').length;
 
-    // [2] 하단 슬라이더 설정 (기존 유지)
-    const swiperBottom = new Swiper('.slide_bottom', {
-        loop: true,
-        speed: 8000,
-        slidesPerView: 'auto',
-        spaceBetween: 18,
-        allowTouchMove: false,
-        autoplay: {
-            delay: 0,
-            disableOnInteraction: false,
-        },
-        freeMode: true,
-    });
-
-    // [3] 상단 슬라이드 호버 제어 (안정화 로직)
-    $('.slide_top').on('mouseenter', function() {
-        // 자동 재생 멈춤
-        swiperTop.autoplay.stop();
-        
-        // 현재 wrapper의 위치값을 강제로 고정 (transition 제거)
-        const wrapper = $(this).find('.swiper-wrapper');
-        const transform = wrapper.css('transform');
-        wrapper.css({
-            'transform': transform,
-            'transition-duration': '0ms'
-        });
-    });
-
-    $('.slide_top').on('mouseleave', function() {
-        const wrapper = $(this).find('.swiper-wrapper');
-        
-        // 1. CSS로 강제 고정했던 속성들을 제거하여 Swiper에게 제어권 반환
-        wrapper.css({
-            'transition-duration': ''
-        });
-
-        // 2. Swiper 엔진 재가동 (매우 중요)
-        // 정지된 상태에서 엔진이 꼬이는 걸 방지하기 위해 update() 후 start()
-        swiperTop.update();
-        swiperTop.autoplay.start();
-        
-        // 3. 만약 여전히 안 움직인다면 미세한 강제 이동 명령 (치트키)
-        // 현재 인덱스로 아주 짧은 시간(1ms) 동안 이동하게 하여 엔진을 깨웁니다.
-        const currentIndex = swiperTop.activeIndex;
-        swiperTop.slideTo(currentIndex, 1, false);
-    });
+const swiperTop = new Swiper('.slide_top', {
+  slidesPerView: 'auto',
+  spaceBetween: 18,
+  loop: true,
+  loopedSlides: topSlideCount,
+  loopAdditionalSlides: topSlideCount,
+  speed: 6000,
+  allowTouchMove: false,
+  watchOverflow: false,
+  observer: true,
+  observeParents: true,
+  autoplay: {
+    delay: 1,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: true,
+    reverseDirection: true
+  }
 });
+
+const swiperBottom = new Swiper('.slide_bottom', {
+  slidesPerView: 'auto',
+  spaceBetween: 18,
+  loop: true,
+  loopedSlides: bottomSlideCount,
+  loopAdditionalSlides: bottomSlideCount,
+  speed: 6000,
+  allowTouchMove: false,
+  watchOverflow: false,
+  observer: true,
+  observeParents: true,
+  autoplay: {
+    delay: 1,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: false,
+    reverseDirection: false
+  }
+});})
+
 
   // 4. 매장 찾기 데이터
   const storeData = {
@@ -154,7 +133,7 @@ $('.event_tabs .tab').on('click', function() {
     ansan: { time: "매일 12:00 - 22:00  라스트오더 21:30", phone: "031-413-1312" },
     suwon: { time: "매일 10:00 - 22:00", phone: "031-308-1005" },
     frombio: { time: "매일 08:00 - 20:00  라스트오더 19:30", phone: "070-4811-5945" },
-    pyengtaek: { time: "매일 10:00 - 22:00", phone: "031-681-3888" }
+    pyeongtaek: { time: "매일 10:00 - 22:00", phone: "031-681-3888" }
   };
 
   // 매장찾기 초기화 및 이벤트
