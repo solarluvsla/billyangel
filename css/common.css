@@ -60,12 +60,23 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative; 
-  z-index: 100; 
-  padding: 0 40px; 
-  background:rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(12px);
-  color: var(--main-gold);
+  gap: clamp(20px, 3vw, 48px);
+  padding: 0 clamp(24px, 4vw, 48px);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  background: rgba(12, 12, 12, 0.62);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  /* 다른 애들보다 위로 올라오게 해줌 */
+  backdrop-filter: blur(20px);
+  /* background: rgba(0, 0, 0, 0.5); 투명한 검정 배경*/
+}
+
+header.sc {
+  backdrop-filter: blur(16px);
+  background: rgba(8, 8, 8, 0.82);
 }
 
 .s_caption {
@@ -82,21 +93,34 @@ header {
 
 header h1 {
   font-size: 20px;
+  flex: 0 0 auto;
   z-index: 30; 
   position: relative;
 }
 
+header h1 a {
+  display: inline-flex;
+  align-items: center;
+  height: 80px;
+  color: rgba(255, 255, 255, 0.96);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
 nav {
+  display: flex;
+  align-items: center;
   flex: 1; 
   margin: 0 50px; 
   height: 100%;
-color: var(--b-color);
+  color: rgba(255, 255, 255, 0.88);
 }
 
 nav ul.gnb {
   width: 100%;
   height: 100%;
   display: flex;
+  align-items: center;
   justify-content: center; 
 }
 
@@ -112,15 +136,17 @@ nav ul.gnb > li > a {
   width: 100%;
   height: 80px; 
   line-height: 80px;
+  color: inherit;
   font-weight: 600;
   font-size: 1.1rem;
   position: relative;
   z-index: 30; 
-  transition: color 0.3s;
+  transition: color 0.3s, opacity 0.3s;
 }
 
 nav ul.gnb > li:hover > a {
   color: var(--caramel);
+  opacity: 1;
 }
 
 
@@ -132,6 +158,9 @@ nav ul.gnb > li > ul.sub {
   display: none;
   z-index: 20; 
   padding: 20px 0;
+  background: transparent;
+  backdrop-filter: none;
+  border-radius: 0;
 }
 
 nav ul.gnb > li > ul.sub > li {
@@ -142,9 +171,14 @@ nav ul.gnb > li > ul.sub > li {
 
 nav ul.gnb > li > ul.sub > li > a {
   display: block;
-  color: var(--main-gray);
+  padding: 4px 0;
+  color: rgba(255, 255, 255, 0.72);
   font-size: 0.95rem;
   transition: color 0.3s;
+}
+
+nav ul.gnb > li > ul.sub:empty {
+  display: none !important;
 }
 
 nav ul.gnb > li > ul.sub > li:hover > a {
@@ -157,10 +191,11 @@ nav ul.gnb > li > ul.sub > li:hover > a {
   top: 80px;
   left: 0;
   width: 100%;
-  height: 140px; 
-  background-color: var(--w-color);
-  border-top: 1px solid var(--line2);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+  height: 170px; 
+  background: rgba(8, 8, 8, 0.74);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(18px);
   display: none;
   z-index: 15;
 }
@@ -169,13 +204,19 @@ nav ul.gnb > li > ul.sub > li:hover > a {
 .right {
   display: flex;
   align-items: center;
+  flex: 0 0 auto;
   gap: 20px;
   position: relative;
   z-index: 30;
 }
 
 .right a {
-  color: var(--deep);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  min-height: 24px;
+  color: rgba(255, 255, 255, 0.9);
   font-size: 1.2rem;
 }
 
@@ -183,6 +224,7 @@ nav ul.gnb > li > ul.sub > li:hover > a {
 #hamMenu {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 5px;
   cursor: pointer;
   margin-left: 10px;
@@ -190,7 +232,7 @@ nav ul.gnb > li > ul.sub > li:hover > a {
 #hamMenu li {
   width: 24px;
   height: 2px;
-  background-color: var(--deep);
+  background-color: rgba(255, 255, 255, 0.92);
 }
 
 

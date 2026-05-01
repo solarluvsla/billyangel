@@ -1,14 +1,149 @@
 $(function(){
 
   // 1. 네비게이션
+  const $subMenus = $('nav ul.gnb > li > ul.sub').filter(function() {
+    return $(this).children().length > 0;
+  });
+
   $('nav ul.gnb').hover(
     function() {
-      $('ul.sub, .headerDim').stop().slideDown();
+      $subMenus.stop().slideDown();
+      $('.headerDim').stop().slideDown();
     }, 
     function() {
-      $('ul.sub, .headerDim').stop().slideUp();
+      $subMenus.stop().slideUp();
+      $('.headerDim').stop().slideUp();
     }
   );
+
+  const $wrap = $('.wrap');
+  const $menuTabs = $('.menu_tab');
+  const $cakeTriggers = $('nav ul.gnb > li').eq(1).find('a').add('.js-cake-link');
+  const $storeTriggers = $('nav ul.gnb > li').eq(2).find('a');
+  const $homeTriggers = $('.js-home-link');
+  let currentProductPrice = 38000;
+  let currentProductQty = 1;
+
+  $('.menu_product_card').each(function() {
+    const $card = $(this);
+
+    if (!$card.find('.menu_product_actions').length) {
+      $card.append(`
+        <div class="menu_product_actions">
+          <button type="button">장바구니</button>
+          <button type="button" class="js-product-buy">구매</button>
+        </div>
+      `);
+    } else {
+      $card.find('.menu_product_actions button').last().addClass('js-product-buy');
+    }
+  });
+
+  function closeSpecialPages() {
+    $wrap.removeClass('is-menu-open is-store-open is-product-open');
+    $('body').removeClass('menu-mode store-mode product-mode');
+    $('#cakeMenuPage, #storeInfoPage, #productPurchasePage').attr('aria-hidden', 'true');
+  }
+
+  function openSpecialPage(pageType) {
+    closeSpecialPages();
+    $('.headerDim, nav ul.gnb > li > ul.sub').stop(true, true).hide();
+
+    if (pageType === 'menu') {
+      $wrap.addClass('is-menu-open');
+      $('body').addClass('menu-mode');
+      $('#cakeMenuPage').attr('aria-hidden', 'false');
+    }
+
+    if (pageType === 'store') {
+      $wrap.addClass('is-store-open');
+      $('body').addClass('store-mode');
+      $('#storeInfoPage').attr('aria-hidden', 'false');
+    }
+
+    if (pageType === 'product') {
+      $wrap.addClass('is-product-open');
+      $('body').addClass('product-mode');
+      $('#productPurchasePage').attr('aria-hidden', 'false');
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  $cakeTriggers.on('click', function(e) {
+    e.preventDefault();
+    openSpecialPage('menu');
+  });
+
+  $storeTriggers.on('click', function(e) {
+    e.preventDefault();
+    openSpecialPage('store');
+  });
+
+  $homeTriggers.on('click', function(e) {
+    e.preventDefault();
+    closeSpecialPages();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  $menuTabs.on('click', function() {
+    $menuTabs.removeClass('is-active');
+    $(this).addClass('is-active');
+  });
+
+  $('.purchase_info_tab').on('click', function() {
+    const tabKey = $(this).data('tab');
+
+    $('.purchase_info_tab').removeClass('is-active');
+    $(this).addClass('is-active');
+
+    $('.purchase_tab_panel').removeClass('is-active');
+    $(`.purchase_tab_panel[data-panel="${tabKey}"]`).addClass('is-active');
+  });
+
+  function formatPrice(value) {
+    return `${value.toLocaleString('ko-KR')}원`;
+  }
+
+  function syncPurchaseTotals() {
+    const total = currentProductPrice * currentProductQty;
+    $('#purchaseQty').text(currentProductQty);
+    $('#purchaseTotal, #purchaseOrderTotal').text(formatPrice(total));
+  }
+
+  $('.menu_product_grid').on('click', '.js-product-buy', function() {
+    const $card = $(this).closest('.menu_product_card');
+    const $img = $card.find('.menu_product_thumb img');
+    const name = $card.find('h3').text().trim();
+    const desc = $card.find('p').first().text().trim();
+    const priceText = $card.find('strong').first().text().trim();
+    const priceValue = Number(priceText.replace(/[^\d]/g, '')) || 0;
+
+    currentProductPrice = priceValue;
+    currentProductQty = 1;
+
+    $('#purchaseTitle, #purchaseSideName, #purchaseCountName').text(`빌리엔젤 ${name}`);
+    $('#purchaseSub, #purchaseSideDesc').text(desc || '빌리엔젤의 시그니처 메뉴입니다.');
+    $('#purchasePrice').text(priceText);
+    $('#purchaseStoryTitle').text(name);
+    $('#purchaseStoryText').text(desc || '빌리엔젤이 제안하는 대표 디저트 메뉴입니다.');
+    $('#purchaseImage, #purchaseDetailImage')
+      .attr('src', $img.attr('src'))
+      .attr('alt', $img.attr('alt'));
+
+    syncPurchaseTotals();
+    openSpecialPage('product');
+  });
+
+  $('.js-qty-minus').on('click', function() {
+    currentProductQty = Math.max(1, currentProductQty - 1);
+    syncPurchaseTotals();
+  });
+
+  $('.js-qty-plus').on('click', function() {
+    currentProductQty += 1;
+    syncPurchaseTotals();
+  });
 
   // 2. main_visual (Swiper)
   const mainSwiper = new Swiper('.main_visual .swiper', {
@@ -49,7 +184,7 @@ $(function(){
   });
 
   //하트 버튼 토글
-  $('.btn_like').on('click', function() {
+  $('.btn_like, .menu_like, .store_like').on('click', function() {
     $(this).toggleClass('is-active');
     const icon = $(this).find('i');
     
